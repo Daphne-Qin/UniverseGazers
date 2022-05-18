@@ -1,8 +1,8 @@
-# Universegazers
+# UniverseGazers
 APCS Final Project
 
 ## Basic Information
-- **Group Name**: Universegazers
+- **Group Name**: UniverseGazers
 - **Group member names**: Judy Chen, Daphne Qin
 - **Brief Project description**: *to be done*
 

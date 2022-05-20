@@ -1,4 +1,4 @@
-# UniverseGazers
+# UniverseGazers: Inspired by Jetpack Joyride
 APCS Final Project
 
 ## Basic Information

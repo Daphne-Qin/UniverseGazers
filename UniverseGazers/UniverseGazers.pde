@@ -14,7 +14,7 @@ private final int GAME = 2;
 private final int END = 3;
 
 void setup() {
-  size(1280, 720); // marge is 1600 x 900
+  size(1280, 720);
   background(225);
   highScore = 0;
 
@@ -22,26 +22,33 @@ void setup() {
 }
 
 void draw() {
+  background(225);
   switch (mode) {
-    case START: 
-      start();
-      break;
-    case INSTRUCTIONS: 
-      instructions();
-      break;
-    case GAME:
-      game();
-      break;
-    case END: 
-      end();
-      break;
+  case START: 
+    start();
+    break;
+  case INSTRUCTIONS: 
+    instructions();
+    break;
+  case GAME:
+    game();
+    break;
+  case END: 
+    end();
+    break;
   }
+
+  // for testing only
+  textSize(10);
+  fill(0);
+  text("Mode: " + mode, 10, 10);
 }
 
 void keyPressed() {
   // start the game
   if (key == ' ' && mode != GAME) {
     //p = new Player(40, height-100, 50);
+    mode = GAME;
     game();
   }
 

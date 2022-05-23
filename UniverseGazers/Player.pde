@@ -5,11 +5,11 @@ float y;
 float dx;
 float dy;
 
-public Player(float xval, float yval, float dxval, float dyval){
+public Player(float xval, float yval, float dxval){
   x = xval;
   y = yval;
   dx = dxval;
-  dy = dyval;
+  dy = 0;
 }
 
 void display(){

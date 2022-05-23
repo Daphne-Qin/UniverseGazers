@@ -8,3 +8,6 @@ APCS Final Project
 
 
 [Prototype](https://docs.google.com/document/d/189F9OhO6VNhNR0iS9Ybe8OsrwMNg-A3QnAEKoP5iDC8/edit?usp=sharing) and [Original Gameplay](https://youtu.be/OhU7tLtOIgE)
+
+### May 23, 2022
+Judy worked on the Player, Spacemen, and Coin classes, but excluded all beautification aspects for now; she wrote the main methods and algorithms for each method in the three classes (minus isTouching() and move() for Player) but plan on tweaking the numbers later on. 

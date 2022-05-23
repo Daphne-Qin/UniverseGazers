@@ -21,10 +21,24 @@ void keyPressed() {
 }
 
 void start() {
-  Player p = new Player(40, height-100, 50);
+  //Player p = new Player(40, height-100, 50);
   coins = 0;
 }
 
 void end() {
   
+}
+
+boolean calcHighScore() {
+  int calc = currentScore + coins * 2;
+  if (calc > highScore) { // highScore changed
+    highScore = calc;
+    return true;
+  }
+  
+  return false; // highScore unchanged
+}
+
+void addToCoin() {
+  coins++;
 }

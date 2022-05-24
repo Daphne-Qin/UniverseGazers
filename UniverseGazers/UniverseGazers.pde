@@ -8,7 +8,7 @@ int coins;
 //ArrayList<Bullets> bulletList;
 
 private int mode;
-private final int START = 0;
+private final int STARTPAGE = 0;
 private final int INSTRUCTIONS = 1;
 private final int GAME = 2;
 private final int END = 3;
@@ -17,15 +17,16 @@ void setup() {
   size(1280, 720);
   background(225);
   highScore = 0;
+  coins = 0;
 
-  start();
+  startPage();
 }
 
 void draw() {
   background(225);
   switch (mode) {
-  case START: 
-    start();
+  case STARTPAGE: 
+    startPage();
     break;
   case INSTRUCTIONS: 
     instructions();
@@ -56,15 +57,27 @@ void keyPressed() {
 }
 
 void mouseClicked() {
+  // delete later, this is only for testing
   mode++;
   if (mode > 3) mode = 0;
 }
 
-void start() {
-  coins = 0;
+void startPage() {
+  stroke(0);
+  fill(255);
+  rect(width/2-500, height/2-250, 1000, 500);
+
+  // end screen text
+  fill(0);
+  textSize(75);
+  text("UniverseGazers", 370, 300);
+  textSize(45);
+  text("Press space to start!", 430, 400);
+  text("Press 'i' for instructions.", 390, 480);
 }
 
 void instructions() {
+  // to implement later
 }
 
 void game() {

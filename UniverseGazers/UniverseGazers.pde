@@ -49,11 +49,10 @@ void keyPressed() {
   if (key == ' ' && mode != GAME) {
     //p = new Player(40, height-100, 50);
     mode = GAME;
-    game();
   }
 
   // end the game
-  if (key == 'e') end();
+  if (key == 'e' && mode == GAME) mode = END;
 }
 
 void mouseClicked() {

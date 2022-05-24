@@ -46,6 +46,14 @@ void draw() {
 }
 
 void keyPressed() {
+  // go to instructions
+  if (key == 'i') {
+    if (mode == STARTPAGE) {
+      mode = INSTRUCTIONS;
+    } else if (mode == INSTRUCTIONS) {
+      mode = STARTPAGE;
+    }
+  }
   // start the game
   if (key == ' ' && mode != GAME) {
     //p = new Player(40, height-100, 50);

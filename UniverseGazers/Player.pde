@@ -28,8 +28,8 @@ public class Player{
       }
     }
     else{
-      if (y == width){
-        y = width;
+      if (y == height){
+        y = height;
       }
       else{
         y -= .10;

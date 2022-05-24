@@ -7,7 +7,7 @@ public class Spacemen{
   public Spacemen(float xval, float dxval){
     xval = x;
     dxval = dx;
-    y = width - 5;
+    y = height - 5;
   }
   
   void display(){
@@ -16,6 +16,9 @@ public class Spacemen{
   
   void move(){
     x += dx;
+    if (x == width){
+      x =0;
+    }
   }
   
   void setSpeed(float speed){

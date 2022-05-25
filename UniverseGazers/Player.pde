@@ -21,7 +21,7 @@ public class Player{
     x += dx;
     if (key == ' '){
       if (y == 0){
-        y == 0;
+        y = 0;
       }
       else{
         y += dy;

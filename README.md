@@ -10,7 +10,17 @@ APCS Final Project
 [Prototype](https://docs.google.com/document/d/189F9OhO6VNhNR0iS9Ybe8OsrwMNg-A3QnAEKoP5iDC8/edit?usp=sharing) and [Original Gameplay](https://youtu.be/OhU7tLtOIgE)
 
 ## Development Log
-
+### June 13, 2022 (Due Date!) 
+### June 10, 2022
+### June 9, 2022
+### June 8, 2022
+### June 7, 2022
+### June 6, 2022
+### June 3, 2022
+### June 2, 2022
+### June 1, 2022
+### May 31, 2022
+### May 30, 2022
 ### May 27, 2022
 ### May 26, 2022
 ### May 25, 2022

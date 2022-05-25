@@ -7,11 +7,11 @@ int coins;
 //ArrayList<Obstacle> obstacleList;
 //ArrayList<Bullets> bulletList;
 
-private int mode;
-private final int STARTPAGE = 0;
-private final int INSTRUCTIONS = 1;
-private final int GAME = 2;
-private final int END = 3;
+int mode;
+final int STARTPAGE = 0;
+final int INSTRUCTIONS = 1;
+final int GAME = 2;
+final int END = 3;
 
 void setup() {
   size(1280, 720);

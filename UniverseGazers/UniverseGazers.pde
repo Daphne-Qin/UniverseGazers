@@ -86,6 +86,9 @@ void startPage() {
 
 void instructions() {
   // to implement later
+  
+  text("Hold down the space bar to move towards the top of the screen.", 100, 100);
+  text("Release to let gravity bring you down.", 100, 200);
 }
 
 void game() {

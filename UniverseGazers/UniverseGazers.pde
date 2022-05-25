@@ -1,4 +1,4 @@
-//Player p;
+Player p;
 
 int highScore;
 int currentScore;
@@ -56,18 +56,12 @@ void keyPressed() {
   }
   // start the game
   if (key == ' ' && mode != GAME) {
-    //p = new Player(40, height-100, 50);
+    p = new Player(100, 650);
     mode = GAME;
   }
 
   // end the game
   if (key == 'e' && mode == GAME) mode = END;
-}
-
-void mouseClicked() {
-  // delete later, this is only for testing
-  mode++;
-  if (mode > 3) mode = 0;
 }
 
 void startPage() {
@@ -93,6 +87,7 @@ void instructions() {
 
 void game() {
   currentScore = 0;
+  p.display();
 }
 
 void end() {

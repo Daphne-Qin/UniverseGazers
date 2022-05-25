@@ -10,7 +10,7 @@ APCS Final Project
 [Prototype](https://docs.google.com/document/d/189F9OhO6VNhNR0iS9Ybe8OsrwMNg-A3QnAEKoP5iDC8/edit?usp=sharing) and [Original Gameplay](https://youtu.be/OhU7tLtOIgE)
 
 ## Development Log
-### June 13, 2022 (Due Date!) 
+### June 13, 2022 (Due Date!)
 ### June 10, 2022
 ### June 9, 2022
 ### June 8, 2022
@@ -27,10 +27,13 @@ APCS Final Project
 ### May 24, 2022
 **Judy** worked on the `Coin`, `Player`, and started the `Obstacle` class, by adding some detail to the display methods and revising the methods she had written yesterday (for clarity, efficiency, and bugs). For homework, she'll write the `instructions()` method in the `Game` class. She also wrote the class skeletons for `Missile` and `Laser`.
 
-**We** merged our branches into the main branch for the first time today.
+**Daphne** worked a bit more on the `Game` class by adding an "`i`" key toggle between the start page and the instructions; she also made the mode variables public so it's accessible from other classes. She also started work on the `Bullet` class.
+
+**We** merged our branches into the main branch for the first time today. This includes:
+- **`Game`**: `startPage()`, `end()`, and `int mode` implementations.
+- **Other Classes**: skeletons, constructors, and basic functionality.
 
 ### May 23, 2022
 **Judy** worked on the `Player`, `Spacemen`, and `Coin` classes, but excluded all beautification aspects for now; she wrote the main methods and algorithms for each method in the three classes (minus `isTouching()` and `move()` for `Player`) but plans on tweaking the numbers later on.
 
 **Daphne** worked on the `Game` class (which has filename `UniverseGazers.pde`). She finished `end()` and `checkHighScore` (so the bare basics of the ending screen is done). She also implemented a `mode` system stored through `private int mode`. She also implemented the skeleton for the rest of the file.
-

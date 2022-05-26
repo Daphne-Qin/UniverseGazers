@@ -37,8 +37,9 @@ public class Player{
     }
   }
 
-  void isTouching(){
-    // Obstacle class isn't written yet, so we can't write this method yet.
+  boolean isTouching(Player player){
+    return (player.getX() == this.getX()
+            && player.getY() == this.getY());
   }
 
   float getX(){

@@ -9,6 +9,7 @@ public class Obstacle{
     float rand2 = (float)(Math.random()*height);
     x = rand1;
     y = rand2;
+    dx = -40;
   }
   
   public Obstacle(float xval, float yval){
@@ -17,10 +18,11 @@ public class Obstacle{
   }
   
   void display(){
-    rect(x, y, 2, 3);
+    rect(x, y, 50, 50);
   }
   
   void move(){
+    x += dx;
   }
   
   float getX(){

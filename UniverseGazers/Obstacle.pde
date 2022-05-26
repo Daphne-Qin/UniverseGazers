@@ -5,12 +5,19 @@ public class Obstacle{
   float dy;
   
   public Obstacle(){
+    float rand1 = (float)(Math.random()*width);
+    float rand2 = (float)(Math.random()*height);
+    x = rand1;
+    y = rand2;
+  }
+  
+  public Obstacle(float xval, float yval){
+    x = xval;
+    y = yval;
   }
   
   void display(){
-    float rand1 = (float)(Math.random()*width);
-    float rand2 = (float)(Math.random()*height);
-    rect(x, y, rand1, rand2);
+    rect(x, y, 2, 3);
   }
   
   void move(){

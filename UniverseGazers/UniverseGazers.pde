@@ -59,7 +59,8 @@ void keyPressed() {
   }
   // start the game
   if (key == ' ' && mode != GAME) {
-    p = new Player(200, floor - 25); // 50 is the diameter
+    p = new Player(200, floor - 25);// 50 is the diameter
+    makeObstacleList();
     currentScore = 0;
     mode = GAME;
   }
@@ -97,6 +98,11 @@ void game() {
   rect(0, floor, width, 40); // floor
   p.move();
   p.display();
+  
+  for (int i = 0; i < obstacleList.size(); i++){
+    obstacleList.get(i).display();
+    obstacleList.get(i).move();
+  }
 }
 
 void end() {
@@ -138,6 +144,7 @@ void setMode(int modeNum) {
 
 void makeObstacleList(){
   obstacleList = new ArrayList<Obstacle>();
+  obstacleList.add(new Obstacle(400, 500));
 }
 
 void makeBulletList(){

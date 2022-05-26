@@ -63,10 +63,6 @@ void keyPressed() {
     currentScore = 0;
     mode = GAME;
   }
-  
-  // moves Player p up
-  if (key == ' ' && mode == GAME) {
-  }
 
   // end the game
   if (key == 'e' && mode == GAME) mode = END;
@@ -99,6 +95,7 @@ void game() {
   fill(255);
   rect(0, 0, width, 40); // ceiling
   rect(0, floor, width, 40); // floor
+  p.move();
   p.display();
 }
 

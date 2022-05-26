@@ -6,7 +6,7 @@ public class Player{
   public Player(float xval, float yval){
     x = xval;
     y = yval;
-    dy = 0;
+    dy = -5;
   }
 
   void display(){
@@ -16,21 +16,23 @@ public class Player{
   }
 
   void move(){
-    if (key == ' '){
-      if (y == 0){
-        y = 0;
-      }
-      else{
-        y += dy;
-      }
+    // set dy
+    if (keyPressed && key == ' ') {
+      dy = 5;
+    } else {
+      dy = -5;
     }
-    else{
-      if (y == height){
-        y = height;
-      }
-      else{
-        y -= .10;
-      }
+    
+    // change y
+    if (y + dy < ceiling + 25) { // at ceiling
+      System.out.println("ceiling");
+      y = ceiling + 25;
+    } else if (y + dy > floor - 25) { // at floor
+      System.out.println("floor");
+      y = floor - 25;
+    } else { // between ceiling and floor
+      System.out.println("air");
+      y += dy;
     }
   }
 
@@ -46,7 +48,7 @@ public class Player{
     return y;
   }
 
-  float getYspeed(){
+  float getYSpeed(){
     return dy;
   }
 

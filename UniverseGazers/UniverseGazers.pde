@@ -5,7 +5,7 @@ int currentScore;
 int coins;
 ArrayList<Spacemen> spacemenList;
 ArrayList<Obstacle> obstacleList;
-ArrayList<Bullets> bulletList;
+ArrayList<Bullet> bulletList;
 
 int mode;
 final int STARTPAGE = 0;

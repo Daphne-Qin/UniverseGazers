@@ -1,4 +1,4 @@
-//Player p;
+Player p;
 
 int highScore;
 int currentScore;
@@ -12,6 +12,9 @@ final int STARTPAGE = 0;
 final int INSTRUCTIONS = 1;
 final int GAME = 2;
 final int END = 3;
+
+final int ceiling = 40;
+final int floor = 680;
 
 void setup() {
   size(1280, 720);
@@ -56,18 +59,13 @@ void keyPressed() {
   }
   // start the game
   if (key == ' ' && mode != GAME) {
-    //p = new Player(40, height-100, 50);
+    p = new Player(100, floor - 25); // 50 is the diameter
+    currentScore = 0;
     mode = GAME;
   }
 
   // end the game
   if (key == 'e' && mode == GAME) mode = END;
-}
-
-void mouseClicked() {
-  // delete later, this is only for testing
-  mode++;
-  if (mode > 3) mode = 0;
 }
 
 void startPage() {
@@ -92,7 +90,13 @@ void instructions() {
 }
 
 void game() {
-  currentScore = 0;
+  textSize(20);
+  text("Current score: " + currentScore, 10, 10);
+  fill(255);
+  rect(0, 0, width, 40); // ceiling
+  rect(0, floor, width, 40); // floor
+  p.move();
+  p.display();
 }
 
 void end() {
@@ -126,4 +130,8 @@ boolean calcHighScore(int calc) {
 
 void addToCoin() {
   coins++;
+}
+
+void setMode(int modeNum) {
+  mode = modeNum;
 }

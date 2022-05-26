@@ -3,9 +3,9 @@ Player p;
 int highScore;
 int currentScore;
 int coins;
-//ArrayList<Spacemen> spacemenList;
-//ArrayList<Obstacle> obstacleList;
-//ArrayList<Bullets> bulletList;
+ArrayList<Spacemen> spacemenList;
+ArrayList<Obstacle> obstacleList;
+ArrayList<Bullets> bulletList;
 
 int mode;
 final int STARTPAGE = 0;
@@ -134,4 +134,16 @@ void addToCoin() {
 
 void setMode(int modeNum) {
   mode = modeNum;
+}
+
+void makeObstacleList(){
+  obstacleList = new ArrayList<Obstacle>();
+}
+
+void makeBulletList(){
+  bulletList = new ArrayList<Bullet>();
+}
+
+void makeSpacemenList(){
+  spacemenList = new ArrayList<Spacemen>();
 }

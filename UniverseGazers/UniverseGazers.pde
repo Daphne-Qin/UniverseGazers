@@ -59,7 +59,7 @@ void keyPressed() {
   }
   // start the game
   if (key == ' ' && mode != GAME) {
-    p = new Player(100, floor - 25); // 50 is the diameter
+    p = new Player(200, floor - 25); // 50 is the diameter
     currentScore = 0;
     mode = GAME;
   }

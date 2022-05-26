@@ -6,7 +6,7 @@ public class Player{
   public Player(float xval, float yval){
     x = xval;
     y = yval;
-    dy = 5;
+    dy = 20;
   }
 
   void display(){
@@ -18,9 +18,9 @@ public class Player{
   void move(){
     // set dy
     if (keyPressed && key == ' ') {
-      dy = -5;
+      dy = -7;
     } else {
-      dy = 5;
+      dy = 15;
     }
     
     // change y
@@ -33,8 +33,9 @@ public class Player{
     }
   }
 
-  void isTouching(){
-    // Obstacle class isn't written yet, so we can't write this method yet.
+  boolean isTouching(Obstacle o){
+    return (o.getX() == this.getX()
+            && o.getY() == this.getY());
   }
 
   float getX(){

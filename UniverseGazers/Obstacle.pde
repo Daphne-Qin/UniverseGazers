@@ -1,4 +1,4 @@
-public abstract class Obstacle{
+public class Obstacle{
   float x;
   float y;
   float dx;

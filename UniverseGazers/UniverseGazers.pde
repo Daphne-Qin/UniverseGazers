@@ -3,9 +3,9 @@ Player p;
 int highScore;
 int currentScore;
 int coins;
-//ArrayList<Spacemen> spacemenList;
-//ArrayList<Obstacle> obstacleList;
-//ArrayList<Bullets> bulletList;
+ArrayList<Spacemen> spacemenList;
+ArrayList<Obstacle> obstacleList;
+ArrayList<Bullets> bulletList;
 
 int mode;
 final int STARTPAGE = 0;
@@ -59,7 +59,7 @@ void keyPressed() {
   }
   // start the game
   if (key == ' ' && mode != GAME) {
-    p = new Player(100, floor - 25); // 50 is the diameter
+    p = new Player(200, floor - 25); // 50 is the diameter
     currentScore = 0;
     mode = GAME;
   }
@@ -134,4 +134,16 @@ void addToCoin() {
 
 void setMode(int modeNum) {
   mode = modeNum;
+}
+
+void makeObstacleList(){
+  obstacleList = new ArrayList<Obstacle>();
+}
+
+void makeBulletList(){
+  bulletList = new ArrayList<Bullet>();
+}
+
+void makeSpacemenList(){
+  spacemenList = new ArrayList<Spacemen>();
 }

@@ -24,7 +24,11 @@ APCS Final Project
 ### May 27, 2022
 ### May 26, 2022
 ### May 25, 2022
+**Judy** worked on `Player` and `Obstacle`. Within `Obstacle`, she got rid of the `abstract` keyword because it doesn't make sense in our goals, and wrote the `isTouching()` method in `Player`, that way, whenever the player comes into contact with an `Obstacle` object, it dies (will be implemented in `Game` later). She merged changes into the main branch.
+
 **Daphne** worked on `Game` and `Player`. Within `Game`, she implemented a `ceiling` and `floor` variable for convenience, and had `game()` display the ceiling, floor, and `currentScore`. For `Player`, she finished the `move()` method, so the circle now moves up (through space key) and down (when space isn't pressed). She merged these changes into `main`.
+
+Since the mechanics of `Player` and its relationship to `Obstacle` objects is coming along, our MVP is developed (or close to developed).
 
 ### May 24, 2022
 **Judy** worked on the `Coin`, `Player`, and started the `Obstacle` class, by adding some detail to the display methods and revising the methods she had written yesterday (for clarity, efficiency, and bugs). For homework, she'll write the `instructions()` method in the `Game` class. She also wrote the class skeletons for `Missile` and `Laser`.

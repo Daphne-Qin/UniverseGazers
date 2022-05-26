@@ -13,6 +13,9 @@ final int INSTRUCTIONS = 1;
 final int GAME = 2;
 final int END = 3;
 
+final int ceiling = 40;
+final int floor = 680;
+
 void setup() {
   size(1280, 720);
   background(225);
@@ -56,8 +59,13 @@ void keyPressed() {
   }
   // start the game
   if (key == ' ' && mode != GAME) {
-    p = new Player(100, 650);
+    p = new Player(100, floor - 25); // 50 is the diameter
+    currentScore = 0;
     mode = GAME;
+  }
+  
+  // moves Player p up
+  if (key == ' ' && mode == GAME) {
   }
 
   // end the game
@@ -86,7 +94,11 @@ void instructions() {
 }
 
 void game() {
-  currentScore = 0;
+  textSize(20);
+  text("Current score: " + currentScore, 10, 10);
+  fill(255);
+  rect(0, 0, width, 40); // ceiling
+  rect(0, floor, width, 40); // floor
   p.display();
 }
 
@@ -121,4 +133,8 @@ boolean calcHighScore(int calc) {
 
 void addToCoin() {
   coins++;
+}
+
+void setMode(int modeNum) {
+  mode = modeNum;
 }

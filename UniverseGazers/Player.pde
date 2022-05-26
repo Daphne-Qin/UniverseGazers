@@ -1,7 +1,7 @@
 public class Player{
-  float x;
-  float y;
-  float dy;
+  private float x;
+  private float y;
+  private float dy;
 
   public Player(float xval, float yval){
     x = xval;

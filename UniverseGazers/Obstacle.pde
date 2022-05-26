@@ -1,8 +1,8 @@
 public class Obstacle{
-  float x;
-  float y;
-  float dx;
-  float dy;
+  private float x;
+  private float y;
+  private float dx;
+  private float dy;
   
   public Obstacle(){
     float rand1 = (float)(Math.random()*width);

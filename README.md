@@ -25,6 +25,8 @@ APCS Final Project
 ### May 26, 2022
 **Judy** worked on the `Game` and `Obstacle` class. I finished two constructors in the `Obstacle` class, and added one line of code to the `move()` method in the class. She also added 3 methods to the `Game` class, which include `makeObstacleList()`, `makeBulletList()`, and `makeSpacemenList()`.  Now, an `Obstacle` object appears when we run the program, but so far it doesn't move to the left yet.
 
+**Daphne** added a `scrollLeft` variable to the `Game` class, which will force all `Obstacle`s except `Laser`s to move to the left (like in the real game). She also worked on the basics of the `Missle` to allow it to display and return width and height. She briefly worked on `Laser`'s' `display()` method, and added an *empty* `move()` command to override the parent.
+
 **We** merged our changes at the end of class, and resolved a merge conflict.
 
 ### May 25, 2022

@@ -5,7 +5,7 @@ int currentScore;
 int coins;
 ArrayList<Spacemen> spacemenList;
 ArrayList<Obstacle> obstacleList;
-ArrayList<Bullets> bulletList;
+ArrayList<Bullet> bulletList;
 
 int mode;
 final int STARTPAGE = 0;
@@ -16,11 +16,14 @@ final int END = 3;
 final int ceiling = 40;
 final int floor = 680;
 
+float scrollLeft;
+
 void setup() {
   size(1280, 720);
   background(225);
   highScore = 0;
   coins = 0;
+  scrollLeft = -5;
 
   startPage();
 }
@@ -61,6 +64,7 @@ void keyPressed() {
   if (key == ' ' && mode != GAME) {
     p = new Player(200, floor - 25); // 50 is the diameter
     currentScore = 0;
+    scrollLeft = -5;
     mode = GAME;
   }
 

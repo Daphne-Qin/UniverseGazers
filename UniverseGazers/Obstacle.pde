@@ -3,10 +3,10 @@ public class Obstacle{
   private int wid, ht;
   
   public Obstacle(){
-    x = (float)(Math.random()*width);
-    y = (float)(Math.random()*height);
-    wid = (int)(Math.random()*50)+10;
-    ht = (int)(Math.random()*50)+10;
+    x = 1280;
+    y = (float)(Math.random()*floor-ceiling) + ceiling;
+    wid = (int)(Math.random()*50)+20;
+    ht = (int)(Math.random()*50)+20;
   }
   
   public Obstacle(float xval, float yval, int wid, int ht){

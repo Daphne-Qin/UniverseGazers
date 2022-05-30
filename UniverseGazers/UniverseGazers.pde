@@ -140,8 +140,21 @@ void game() {
       currentCoins++;
     }
   }
-
-
+  
+  // spawn Obstacles
+  double chance = Math.random();
+    if (chance < 0.025){
+      if (Math.random() < 0.5){
+        float y = (float)(Math.random()*floor-ceiling) + ceiling-100;
+        obstacleList.add(new Obstacle(1280, y, 100,25));
+      }
+      else{
+        float y = (float)(Math.random()*floor-ceiling) + ceiling-100;
+        obstacleList.add(new Obstacle(1280, y, 25,100));
+      }
+   }
+   
+   
   // === increment score ===
   currentScore++;
 }
@@ -198,14 +211,7 @@ void makeCoinList() {
 
 void makeObstacleList(){
   obstacleList = new ArrayList<Obstacle>();
-  obstacleList.add(new Obstacle(400, 500, 50, 50));
-  
-  while (mode == GAME){
-    double chance = Math.random();
-    if (chance < 0.5){
-      obstacleList.add(new Obstacle());
-    }
-  }
+ 
 }
 
 void makeSpacemenList(){

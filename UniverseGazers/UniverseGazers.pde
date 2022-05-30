@@ -25,7 +25,7 @@ void setup() {
   coins = 0;
   scrollLeft = -5;
 
-  startPage();
+  mode = STARTPAGE;
 }
 
 void draw() {
@@ -114,10 +114,7 @@ void game() {
     o.move();
     
     // check for game end at the same time
-    if (p.isTouching(o)) {
-      System.out.println("hi");
-      mode = END;
-    }
+    if (p.isTouching(o)) mode = END;
   }
   
   

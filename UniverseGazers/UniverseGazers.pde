@@ -170,6 +170,13 @@ void setMode(int modeNum) {
 void makeObstacleList(){
   obstacleList = new ArrayList<Obstacle>();
   obstacleList.add(new Obstacle(400, 500, 50, 50));
+  
+  while (mode == GAME){
+    double chance = Math.random();
+    if (chance < 0.5){
+      obstacleList.add(new Obstacle());
+    }
+  }
 }
 
 void makeBulletList(){

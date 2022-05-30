@@ -95,6 +95,10 @@ void instructions() {
 }
 
 void game() {
+  
+  PImage bg = loadImage("UniverseBackground.png");
+  image(bg,0,0);
+  
   textSize(20);
   text("Current score: " + currentScore, 10, 10);
   fill(255);

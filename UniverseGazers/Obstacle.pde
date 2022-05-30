@@ -22,7 +22,7 @@ public class Obstacle{
   }
   
   void move(){
-    x += dx;
+    x += dx + scrollLeft;
   }
   
   float getX(){

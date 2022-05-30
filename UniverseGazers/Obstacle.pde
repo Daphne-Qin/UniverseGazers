@@ -1,11 +1,10 @@
 public class Obstacle{
-  private float x, y, dx, dy;
+  private float x, y, dy;
   private int wid, ht;
   
   public Obstacle(){
     x = (float)(Math.random()*width);
     y = (float)(Math.random()*height);
-    dx = -40;
     wid = (int)(Math.random()*50)+10;
     ht = (int)(Math.random()*50)+10;
   }
@@ -22,7 +21,7 @@ public class Obstacle{
   }
   
   void move(){
-    x += dx + scrollLeft;
+    x += scrollLeft;
   }
   
   float getX(){
@@ -31,10 +30,6 @@ public class Obstacle{
   
   float getY(){
     return y;
-  }
-  
-  float getXSpeed(){
-    return dx;
   }
   
   float getYSpeed(){

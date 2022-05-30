@@ -32,8 +32,12 @@ public class Player{
       y += dy;
     }
   }
-
-  boolean isTouching(Obstacle o){
+  
+  boolean isTouchingCoin(Coin c) {
+    return (dist(x, y, c.getX(), c.getY()) <= 40);
+  }
+  
+  boolean isTouchingObstacle(Obstacle o){
     boolean horizontal = (x + 25 >= o.getX() && x - 25 <= o.getX()+o.getWidth());
     boolean vertical = (y + 25 >= o.getY() && y - 25 <= o.getY()+o.getHeight());
     return (horizontal && vertical);
@@ -50,5 +54,4 @@ public class Player{
   float getYSpeed(){
     return dy;
   }
-
 }

@@ -1,21 +1,25 @@
 Player p;
 
+// stat variables
 int highScore;
 int currentScore;
 int coins;
-ArrayList<Spacemen> spacemenList;
-ArrayList<Obstacle> obstacleList;
-ArrayList<Bullet> bulletList;
 
+ArrayList<Bullet> bulletList;
+ArrayList<Coin> coinList;
+ArrayList<Obstacle> obstacleList;
+ArrayList<Spacemen> spacemenList;
+
+// mode variables
 int mode;
 final int STARTPAGE = 0;
 final int INSTRUCTIONS = 1;
 final int GAME = 2;
 final int END = 3;
 
+// game mechanic variables
 final int ceiling = 50;
 final int floor = 670;
-
 float scrollLeft;
 
 void setup() {
@@ -63,6 +67,7 @@ void keyPressed() {
   // start the game
   if (key == ' ' && mode != GAME) {
     p = new Player(200, floor - 25);// 50 is the diameter
+    makeCoinList();
     makeObstacleList();
     currentScore = 0;
     scrollLeft = -5;
@@ -95,15 +100,11 @@ void instructions() {
 }
 
 void game() {
-  
   // display floor, ceiling, currentScore, coins
-  
   PImage bg = loadImage("UniverseBackground.png");
   image(bg,0,0);
   
-  textSize(20);
-  text("Current score: " + currentScore, 10, 10);
-
+  // display floor, ceiling, currentScore, coins
   fill(255);
   rect(0, 0, width, ceiling); // ceiling
   rect(0, floor, width, ceiling); // floor
@@ -122,7 +123,19 @@ void game() {
     o.move();
     
     // check for game end at the same time
-    if (p.isTouching(o)) mode = END;
+    if (p.isTouchingObstacle(o)) mode = END;
+  }
+  
+  for (int i = 0; i < coinList.size(); i++) {
+    Coin c = coinList.get(i);
+    c.display();
+    c.move();
+    
+    // add coins at the same time
+    if (p.isTouchingCoin(c)) {
+      coinList.remove(c);
+      coins++;
+    }
   }
   
   
@@ -167,13 +180,18 @@ void setMode(int modeNum) {
   mode = modeNum;
 }
 
+void makeBulletList(){
+  bulletList = new ArrayList<Bullet>();
+}
+
+void makeCoinList() {
+  coinList = new ArrayList<Coin>();
+  coinList.add(new Coin(1000, 605));
+}
+
 void makeObstacleList(){
   obstacleList = new ArrayList<Obstacle>();
   obstacleList.add(new Obstacle(400, 500, 50, 50));
-}
-
-void makeBulletList(){
-  bulletList = new ArrayList<Bullet>();
 }
 
 void makeSpacemenList(){

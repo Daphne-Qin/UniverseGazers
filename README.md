@@ -20,8 +20,15 @@ APCS Final Project
 ### June 2, 2022
 ### June 1, 2022
 ### May 31, 2022
-### May 30, 2022 (Memorial Day)
-### May 27-29, 2022
+### May 27-30, 2022 (Memorial Day Weekend)
+**Daphne** revamped the `Coin` method so that it stores only one shape at a time, instead of an ArrayList of them. She also added `wid` and `ht` variables to `Obstacle` (and thus removed them from `Missle` since those were redundant). She implemented both `isTouchingCoin` (to add coins) and `isTouchingObstacle` (formerly `isTouching`, causes player death). She also organized the classes a bit.
+
+**We** created the `demo` branch. Additionally, here's a more organized list of the changes we made.
+- Added a background
+- Revamp `Coin` class to store information for only one shape
+- Added deaths and coin-adding
+- Generally organized placement of methods and added comments
+
 ### May 26, 2022
 **Judy** worked on the `Game` and `Obstacle` class. I finished two constructors in the `Obstacle` class, and added one line of code to the `move()` method in the class. She also added 3 methods to the `Game` class, which include `makeObstacleList()`, `makeBulletList()`, and `makeSpacemenList()`.  Now, an `Obstacle` object appears when we run the program, but so far it doesn't move to the left yet.
 

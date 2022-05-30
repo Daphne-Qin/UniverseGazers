@@ -15,10 +15,18 @@ public class Coin {
     fill(0);
     text("C", x, y);
     fill(245, 215, 66);
-    circle(x, y, 3);
+    circle(x, y, 30);
   }
   
   void move() {
     x += scrollLeft;
+  }
+  
+  float getX() {
+    return x;
+  }
+  
+  float getY() {
+    return y;
   }
 }

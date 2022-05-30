@@ -95,10 +95,15 @@ void instructions() {
 }
 
 void game() {
+  
+  // display floor, ceiling, currentScore, coins
+  
   PImage bg = loadImage("UniverseBackground.png");
   image(bg,0,0);
   
-  // display floor, ceiling, currentScore, coins
+  textSize(20);
+  text("Current score: " + currentScore, 10, 10);
+
   fill(255);
   rect(0, 0, width, ceiling); // ceiling
   rect(0, floor, width, ceiling); // floor

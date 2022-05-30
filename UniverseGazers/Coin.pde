@@ -17,4 +17,8 @@ public class Coin {
     fill(245, 215, 66);
     circle(x, y, 3);
   }
+  
+  void move() {
+    x += scrollLeft;
+  }
 }

@@ -20,7 +20,8 @@ final int END = 3;
 // game mechanic variables
 final int ceiling = 50;
 final int floor = 670;
-float scrollLeft;
+float scrollLeft; // speed at which game elements moves left
+PImage bg; // background
 
 void setup() {
   size(1280, 720);
@@ -28,7 +29,8 @@ void setup() {
   highScore = 0;
   coins = 0;
   scrollLeft = -5;
-
+  bg = loadImage("UniverseBackground.png");
+  
   mode = STARTPAGE;
 }
 
@@ -101,7 +103,7 @@ void instructions() {
 
 void game() {
   // display floor, ceiling, currentScore, coins
-  PImage bg = loadImage("UniverseBackground.png");
+  
   image(bg,0,0);
   
   // display floor, ceiling, currentScore, coins

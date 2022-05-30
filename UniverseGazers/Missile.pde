@@ -1,24 +1,12 @@
 public class Missile extends Obstacle {
-  int wid;
-  int ht;
 
   public Missile(float x, float y, int wid, int ht){
-    super(x, y);
-    this.wid = wid;
-    this.ht = ht;
+    super(x, y, wid, ht);
   }
 
   void display(){
-    rect(getX(), getY(), wid, ht);
+    rect(getX(), getY(), getWidth(), getHeight());
   }
 
   // Missle inherits Obstacle move()
-
-  int getWidth() {
-    return wid;
-  }
-
-  int getHeight() {
-    return ht;
-  }
 }

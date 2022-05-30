@@ -7,7 +7,7 @@ public class Spacemen{
   public Spacemen(float xval, float dxval){
     xval = x;
     dxval = dx;
-    y = height - 5;
+    y = floor - 5;
   }
   
   void display(){

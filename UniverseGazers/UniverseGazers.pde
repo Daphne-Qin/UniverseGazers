@@ -13,8 +13,8 @@ final int INSTRUCTIONS = 1;
 final int GAME = 2;
 final int END = 3;
 
-final int ceiling = 40;
-final int floor = 680;
+final int ceiling = 50;
+final int floor = 670;
 
 float scrollLeft;
 
@@ -25,7 +25,7 @@ void setup() {
   coins = 0;
   scrollLeft = -5;
 
-  startPage();
+  mode = STARTPAGE;
 }
 
 void draw() {
@@ -48,7 +48,7 @@ void draw() {
   // for testing only
   textSize(10);
   fill(0);
-  text("Mode: " + mode, 10, 10);
+  //text("Mode: " + mode, 10, 10);
 }
 
 void keyPressed() {
@@ -95,18 +95,31 @@ void instructions() {
 }
 
 void game() {
-  textSize(20);
-  text("Current score: " + currentScore, 10, 10);
+  // display floor, ceiling, currentScore, coins
   fill(255);
-  rect(0, 0, width, 40); // ceiling
-  rect(0, floor, width, 40); // floor
+  rect(0, 0, width, ceiling); // ceiling
+  rect(0, floor, width, ceiling); // floor
+  fill(0);
+  textSize(15);
+  text("Current score: " + currentScore, 10, 20);
+  text("Coins collected: " + coins, 10, 40);
+  
+  
+  // === move all elements ===
   p.move();
   p.display();
   
-  for (int i = 0; i < obstacleList.size(); i++){
-    obstacleList.get(i).display();
-    obstacleList.get(i).move();
+  for (Obstacle o : obstacleList){
+    o.display();
+    o.move();
+    
+    // check for game end at the same time
+    if (p.isTouching(o)) mode = END;
   }
+  
+  
+  // === increment score ===
+  currentScore++;
 }
 
 void end() {
@@ -148,7 +161,7 @@ void setMode(int modeNum) {
 
 void makeObstacleList(){
   obstacleList = new ArrayList<Obstacle>();
-  obstacleList.add(new Obstacle(400, 500));
+  obstacleList.add(new Obstacle(400, 500, 50, 50));
 }
 
 void makeBulletList(){

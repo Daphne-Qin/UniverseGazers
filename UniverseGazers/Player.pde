@@ -34,8 +34,9 @@ public class Player{
   }
 
   boolean isTouching(Obstacle o){
-    return (o.getX() == this.getX()
-            && o.getY() == this.getY());
+    boolean horizontal = (x + 25 >= o.getX() && x - 25 <= o.getX()+o.getWidth());
+    boolean vertical = (y + 25 >= o.getY() && y - 25 <= o.getY()+o.getHeight());
+    return (horizontal && vertical);
   }
 
   float getX(){

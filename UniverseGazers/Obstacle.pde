@@ -1,24 +1,24 @@
 public class Obstacle{
-  private float x;
-  private float y;
-  private float dx;
-  private float dy;
+  private float x, y, dx, dy;
+  private int wid, ht;
   
   public Obstacle(){
-    float rand1 = (float)(Math.random()*width);
-    float rand2 = (float)(Math.random()*height);
-    x = rand1;
-    y = rand2;
+    x = (float)(Math.random()*width);
+    y = (float)(Math.random()*height);
     dx = -40;
+    wid = (int)(Math.random()*50)+10;
+    ht = (int)(Math.random()*50)+10;
   }
   
-  public Obstacle(float xval, float yval){
+  public Obstacle(float xval, float yval, int wid, int ht){
     x = xval;
     y = yval;
+    this.wid = wid;
+    this.ht = ht;
   }
   
   void display(){
-    rect(x, y, 50, 50);
+    rect(x, y, wid, ht);
   }
   
   void move(){
@@ -41,4 +41,11 @@ public class Obstacle{
     return dy;
   }
   
+  int getWidth() {
+    return wid;
+  }
+  
+  int getHeight() {
+    return ht;
+  } 
 }

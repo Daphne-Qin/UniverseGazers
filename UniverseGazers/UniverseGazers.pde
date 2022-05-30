@@ -143,7 +143,7 @@ void game() {
   
   // spawn Obstacles
   double chance = Math.random();
-    if (chance < 0.025){
+    if (chance < 0.01){
       if (Math.random() < 0.5){
         float y = (float)(Math.random()*(floor-ceiling-25)) + ceiling;
         obstacleList.add(new Obstacle(1280, y, 100,25));

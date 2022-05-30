@@ -4,6 +4,7 @@ Player p;
 int highScore;
 int currentScore;
 int coins;
+int currentCoins;
 
 ArrayList<Bullet> bulletList;
 ArrayList<Coin> coinList;
@@ -30,7 +31,7 @@ void setup() {
   coins = 0;
   scrollLeft = -5;
   bg = loadImage("UniverseBackground.png");
-  
+
   mode = STARTPAGE;
 }
 
@@ -96,16 +97,16 @@ void startPage() {
 
 void instructions() {
   // to implement later
-  
+
   text("Hold down the space bar to move towards the top of the screen.", 100, 100);
   text("Release to let gravity bring you down.", 100, 200);
 }
 
 void game() {
   // display floor, ceiling, currentScore, coins
-  
-  image(bg,0,0);
-  
+
+  image(bg, 0, 0);
+
   // display floor, ceiling, currentScore, coins
   fill(255);
   rect(0, 0, width, ceiling); // ceiling
@@ -113,34 +114,34 @@ void game() {
   fill(0);
   textSize(15);
   text("Current score: " + currentScore, 10, 20);
-  text("Coins collected: " + coins, 10, 40);
-  
-  
+  text("Coins collected: " + currentCoins, 10, 40);
+
+
   // === move all elements ===
   p.move();
   p.display();
-  
-  for (Obstacle o : obstacleList){
+
+  for (Obstacle o : obstacleList) {
     o.display();
     o.move();
-    
+
     // check for game end at the same time
     if (p.isTouchingObstacle(o)) mode = END;
   }
-  
+
   for (int i = 0; i < coinList.size(); i++) {
     Coin c = coinList.get(i);
     c.display();
     c.move();
-    
+
     // add coins at the same time
     if (p.isTouchingCoin(c)) {
       coinList.remove(c);
-      coins++;
+      currentCoins++;
     }
   }
-  
-  
+
+
   // === increment score ===
   currentScore++;
 }
@@ -149,7 +150,9 @@ void end() {
   stroke(0);
   fill(255);
   rect(width/2-500, height/2-250, 1000, 500);
-
+  
+  coins += currentCoins;
+  currentCoins = 0; // to avoid calculating high score more than once
   int calc = currentScore + coins * 2;
 
   // end screen text
@@ -163,6 +166,8 @@ void end() {
   if (calcHighScore(calc)) text("New High Score!", 525, 430);
   fill(0);
   text("Press space to replay.", 485, 510);
+  textSize(15);
+  text("High Score: " + highScore, 590, 550);
 }
 
 boolean calcHighScore(int calc) {
@@ -175,7 +180,7 @@ boolean calcHighScore(int calc) {
 }
 
 void addToCoin() {
-  coins++;
+  currentCoins++;
 }
 
 void setMode(int modeNum) {

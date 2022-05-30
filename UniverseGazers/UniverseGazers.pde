@@ -95,6 +95,9 @@ void instructions() {
 }
 
 void game() {
+  PImage bg = loadImage("UniverseBackground.png");
+  image(bg,0,0);
+  
   // display floor, ceiling, currentScore, coins
   fill(255);
   rect(0, 0, width, ceiling); // ceiling

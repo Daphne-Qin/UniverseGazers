@@ -72,6 +72,7 @@ void keyPressed() {
     p = new Player(200, floor - 25);// 50 is the diameter
     makeCoinList();
     makeObstacleList();
+    makeSpacemenList();
     currentScore = 0;
     scrollLeft = -5;
     mode = GAME;
@@ -148,12 +149,22 @@ void game() {
       currentCoins++;
     }
   }
+  
+  for (int j = 0; j < spacemenList.size(); j ++){
+    Spacemen s = spacemenList.get(j);
+    s.display();
+    s.move();
+  }
 
   // spawn Coins
   if (Math.random() < 0.0025) spawnCoins();
 
   // spawn Obstacles
   if (Math.random() < 0.015) spawnObstacles();
+  
+  // spawn Spacemen
+  // frequency TBD
+  if (Math.random() < 0.015) spawnSpacemen();
 
 
   // === increment score and speed ===
@@ -266,4 +277,9 @@ void spawnObstacles() {
 
   // add the Obstacle
   obstacleList.add(o);
+}
+
+void spawnSpacemen(){
+  //Spacemen man = new Spacemen(1280, scrollLeft);
+  //spacemenList.add(man);
 }

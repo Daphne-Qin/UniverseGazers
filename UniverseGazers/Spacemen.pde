@@ -24,4 +24,8 @@ public class Spacemen{
   void setSpeed(float speed){
     dx = speed;
   }
+  
+  boolean isTouchingBullet(Bullet b){
+    return(b.getX() == x && b.getY() == y);
+  }
 }

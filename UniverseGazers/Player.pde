@@ -11,7 +11,7 @@ public class Player{
 
   void display(){
     // just using a circle for the player for now
-    fill(255);
+    fill(255,0,0);
     circle(x, y, 50);
   }
 

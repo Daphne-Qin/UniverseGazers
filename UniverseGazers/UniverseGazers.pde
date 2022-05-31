@@ -246,3 +246,7 @@ void spawnCoins() {
     }
   }
 }
+
+void setScrollLeft(float val){
+  scrollLeft = scrollLeft + val;
+}

@@ -2,11 +2,15 @@ public class Player{
   private float x;
   private float y;
   private float dy;
+  private float ACCELERATION;
+  private float GRAVITY;
 
   public Player(float xval, float yval){
     x = xval;
     y = yval;
-    dy = 20;
+    dy = 0;
+    ACCELERATION = -0.50;
+    GRAVITY = 0.35;
   }
 
   void display(){
@@ -16,17 +20,25 @@ public class Player{
   }
 
   void move(){
-    // set dy
+    boolean atCeiling = y + dy < ceiling + 25;
+    boolean atFloor = y + dy > floor - 25;
+    
+    // set dy to 0 if it's at the ceiling or floor
+    if (atCeiling || atFloor) {
+      dy = 0;
+    }
+    
+    // modify dy based on direction
     if (keyPressed && key == ' ') {
-      dy = -7;
+      dy += ACCELERATION;
     } else {
-      dy = 15;
+      dy += GRAVITY;
     }
     
     // change y
-    if (y + dy < ceiling + 25) { // at ceiling
+    if (atCeiling) {
       y = ceiling + 25;
-    } else if (y + dy > floor - 25) { // at floor
+    } else if (atFloor) {
       y = floor - 25;
     } else { // between ceiling and floor
       y += dy;

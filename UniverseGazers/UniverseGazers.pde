@@ -168,7 +168,7 @@ void end() {
 
   coins += currentCoins;
   currentCoins = 0; // to avoid calculating high score more than once
-  int calc = currentScore + currentCoins * 2;
+  int calc = currentScore + coins * 2;
 
   // end screen text
   textAlign(CENTER);

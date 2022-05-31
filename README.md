@@ -24,6 +24,8 @@ Note: To refer to `UniverseGazers.pde`, we use `Game` since that was the origina
 ### May 31, 2022
 **Judy (who is out due to COVID)** started to implement `Spacemen` objects into the `Game` class, but only completed about half or so of the code needed for functional `Spacemen` objects. She added a method in the `Spacemen` that checks whether a `Spacemen` object is touching a `Bullet` object. Additionally, she added accessor methods to the `Bullet` class and privatized the instance variables. Everything here has been merged into `main` branch.
 
+**Daphne** added two new variables to the `Player` class: `ACCELERATION` and `GRAVITY`. Instead of having `dy` being two separate constants, either `ACCELERATION` (when the space key is pressed) or `GRAVITY` (when the space key isn't pressed) will be added. She also edited the `scrollLeft` acceleration code so that it continually increments the scroll speed and added a speed maximum so that it doesn't go beyond -20.
+
 ### May 27-30, 2022 (Memorial Day Weekend combined with Friday)
 **Judy** imported an image within the `Game` class so that there would be a background whenever the game is started. She also wrote the `instructions()` method within the `Game` class. In order to display a randomized selection (orientation) of `Obstacle` objects as the game progresses, she wrote a loop within the `Game` class to continuously add obstacles to an `ArrayList` of `Obstacle`s. She also introduced game scrolling acceleration by subtracting from `scrollLeft` (which uses negative numbers).
 

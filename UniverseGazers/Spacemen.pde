@@ -7,11 +7,11 @@ public class Spacemen{
   public Spacemen(float xval, float dxval){
     xval = x;
     dxval = dx;
-    y = floor - 5;
+    y = floor - 25;
   }
   
   void display(){
-    ellipse(x, y, 5, 5);
+    ellipse(x, y, 25, 40);
   }
   
   void move(){
@@ -23,5 +23,9 @@ public class Spacemen{
   
   void setSpeed(float speed){
     dx = speed;
+  }
+  
+  boolean isTouchingBullet(Bullet b){
+    return(b.getX() == x && b.getY() == y);
   }
 }

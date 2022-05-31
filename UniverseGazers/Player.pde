@@ -37,6 +37,7 @@ public class Player{
     return (dist(x, y, c.getX(), c.getY()) <= 40);
   }
   
+  // may have to edit to accomodate for missile and laser
   boolean isTouchingObstacle(Obstacle o){
     boolean horizontal = (x + 25 >= o.getX() && x - 25 <= o.getX()+o.getWidth());
     boolean vertical = (y + 25 >= o.getY() && y - 25 <= o.getY()+o.getHeight());

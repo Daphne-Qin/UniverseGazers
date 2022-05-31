@@ -1,7 +1,5 @@
 public class Bullet{
-  float x;
-  float y;
-  float dy;
+  private float x, y, dx, dy;
   
   public Bullet(float x, float y){
     this.x = x;
@@ -16,8 +14,17 @@ public class Bullet{
   void move(){
   }
   
-  boolean isTouching(){
+  boolean isTouchingCoin(){
     addToCoin();
     return true;
   }
+  
+  float getX(){
+    return x;
+  }
+  
+  float getY(){
+    return y;
+  }
+  
 }

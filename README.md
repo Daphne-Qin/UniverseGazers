@@ -11,7 +11,7 @@ APCS Final Project
 
 ## Development Log
 ### June 13, 2022 (Due Date!)
-### June 10, 2022
+### June 10-12, 2022
 ### June 9, 2022
 ### June 8, 2022
 ### June 7, 2022
@@ -20,7 +20,9 @@ APCS Final Project
 ### June 2, 2022
 ### June 1, 2022
 ### May 31, 2022
-### May 27-30, 2022 (Memorial Day Weekend)
+### May 27-30, 2022 (Memorial Day Weekend combined with Friday)
+**Judy** imported an image within the `Game` class so that there would be a background whenever the game is started. She also wrote the `instructions()` method within the `Game` class. In order to display a randomized selection (orientation) of `Obstacle` objects as the game progresses, she wrote a loop within the `Game` class to continuously add obstacles to an `ArrayList` of `Obstacle`s. 
+
 **Daphne** revamped the `Coin` method so that it stores only one shape at a time, instead of an ArrayList of them. She also added `wid` and `ht` variables to `Obstacle` (and thus removed them from `Missle` since those were redundant). She implemented both `isTouchingCoin` (to add coins) and `isTouchingObstacle` (formerly `isTouching`, causes player death). She also organized the classes a bit.
 
 **We** created the `demo` branch. Additionally, here's a more organized list of the changes we made.
@@ -28,6 +30,7 @@ APCS Final Project
 - Revamp `Coin` class to store information for only one shape
 - Added deaths and coin-adding
 - Generally organized placement of methods and added comments
+- We have our MVP! YAY!
 
 ### May 26, 2022
 **Judy** worked on the `Game` and `Obstacle` class. I finished two constructors in the `Obstacle` class, and added one line of code to the `move()` method in the class. She also added 3 methods to the `Game` class, which include `makeObstacleList()`, `makeBulletList()`, and `makeSpacemenList()`.  Now, an `Obstacle` object appears when we run the program, but so far it doesn't move to the left yet.

@@ -112,7 +112,6 @@ void instructions() {
 
 void game() {
   // display floor, ceiling, currentScore, coins
-
   image(bg, 0, 0);
 
   // display floor, ceiling, currentScore, coins
@@ -157,8 +156,9 @@ void game() {
   if (Math.random() < 0.015) spawnObstacles();
 
 
-  // === increment score ===
+  // === increment score and speed ===
   currentScore++;
+  if (currentScore % 1000 == 0) scrollLeft--;
 }
 
 void end() {

@@ -140,21 +140,23 @@ void game() {
       currentCoins++;
     }
   }
-  
+
+  // spawn Coins
+  if (Math.random() < 0.0001) spawnCoins();
+
   // spawn Obstacles
   double chance = Math.random();
-    if (chance < 0.025){
-      if (Math.random() < 0.5){
-        float y = (float)(Math.random()*floor-ceiling) + ceiling-100;
-        obstacleList.add(new Obstacle(1280, y, 100,25));
-      }
-      else{
-        float y = (float)(Math.random()*floor-ceiling) + ceiling-100;
-        obstacleList.add(new Obstacle(1280, y, 25,100));
-      }
-   }
-   
-   
+  if (chance < 0.025) {
+    if (Math.random() < 0.5) {
+      float y = (float)(Math.random()*floor-ceiling) + ceiling-100;
+      obstacleList.add(new Obstacle(1280, y, 100, 25));
+    } else {
+      float y = (float)(Math.random()*floor-ceiling) + ceiling-100;
+      obstacleList.add(new Obstacle(1280, y, 25, 100));
+    }
+  }
+
+
   // === increment score ===
   currentScore++;
 }
@@ -163,7 +165,7 @@ void end() {
   stroke(0);
   fill(255);
   rect(width/2-500, height/2-250, 1000, 500);
-  
+
   coins += currentCoins;
   currentCoins = 0; // to avoid calculating high score more than once
   int calc = currentScore + coins * 2;
@@ -200,7 +202,7 @@ void setMode(int modeNum) {
   mode = modeNum;
 }
 
-void makeBulletList(){
+void makeBulletList() {
   bulletList = new ArrayList<Bullet>();
 }
 
@@ -209,11 +211,24 @@ void makeCoinList() {
   coinList.add(new Coin(1000, 605));
 }
 
-void makeObstacleList(){
+void makeObstacleList() {
   obstacleList = new ArrayList<Obstacle>();
- 
 }
 
-void makeSpacemenList(){
+void makeSpacemenList() {
   spacemenList = new ArrayList<Spacemen>();
+}
+
+void spawnCoins() {
+  int[][] layout = CoinLayouts.getArrangement();
+  float firstX = 1295;
+  float firstY = ( (float)(Math.random()*20) ) * 30 + ceiling; // all layouts have 6 rows or less, so 30 is enough
+
+  for (int i = 0; i < layout.length; i++) { // determines y
+    for (int j = 0; j < layout[i].length; j++) { // determines x
+      float x = firstX + j * 30;
+      float y = firstY + j * 30;
+      coinList.add(new Coin(x, y));
+    }
+  }
 }

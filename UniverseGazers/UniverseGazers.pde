@@ -215,7 +215,6 @@ void makeBulletList(){
 
 void makeCoinList() {
   coinList = new ArrayList<Coin>();
-  coinList.add(new Coin(1000, 605));
 }
 
 void makeObstacleList(){

@@ -17,6 +17,7 @@ public class Obstacle{
   }
   
   void display(){
+    fill(204, 143, 247);
     rect(x, y, wid, ht);
   }
   

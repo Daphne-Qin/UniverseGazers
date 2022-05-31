@@ -142,16 +142,16 @@ void game() {
   }
 
   // spawn Coins
-  if (Math.random() < 0.0001) spawnCoins();
+  if (Math.random() < 0.001) spawnCoins();
 
   // spawn Obstacles
   double chance = Math.random();
-  if (chance < 0.025) {
+  if (chance < 0.015) {
     if (Math.random() < 0.5) {
-      float y = (float)(Math.random()*floor-ceiling) + ceiling-100;
+      float y = (float)(Math.random()*(floor-ceiling-25)) + ceiling;
       obstacleList.add(new Obstacle(1280, y, 100, 25));
     } else {
-      float y = (float)(Math.random()*floor-ceiling) + ceiling-100;
+      float y = (float)(Math.random()*(floor-ceiling-100)) + ceiling;
       obstacleList.add(new Obstacle(1280, y, 25, 100));
     }
   }
@@ -226,9 +226,11 @@ void spawnCoins() {
 
   for (int i = 0; i < layout.length; i++) { // determines y
     for (int j = 0; j < layout[i].length; j++) { // determines x
-      float x = firstX + j * 30;
-      float y = firstY + j * 30;
-      coinList.add(new Coin(x, y));
+      if (layout[i][j] == 1) {
+        float x = firstX + j * 30;
+        float y = firstY + i * 30;
+        coinList.add(new Coin(x, y));
+      }
     }
   }
 }

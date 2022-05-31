@@ -18,9 +18,9 @@ public class Player{
   void move(){
     // set dy
     if (keyPressed && key == ' ') {
-      dy = -14;
+      dy = -7;
     } else {
-      dy = 30;
+      dy = 15;
     }
     
     // change y

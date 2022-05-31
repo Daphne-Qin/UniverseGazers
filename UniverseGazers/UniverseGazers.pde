@@ -86,13 +86,14 @@ void startPage() {
   fill(255);
   rect(width/2-500, height/2-250, 1000, 500);
 
-  // end screen text
+  // start screen text
+  textAlign(CENTER);
   fill(0);
   textSize(75);
-  text("UniverseGazers", 370, 300);
+  text("UniverseGazers", width/2, 300);
   textSize(45);
-  text("Press space to start!", 430, 400);
-  text("Press 'i' for instructions.", 390, 480);
+  text("Press space to start!", width/2, 400);
+  text("Press 'i' for instructions.", width/2, 480);
 }
 
 void instructions() {
@@ -113,6 +114,7 @@ void game() {
   rect(0, floor, width, ceiling); // floor
   fill(0);
   textSize(15);
+  textAlign(LEFT);
   text("Current score: " + currentScore, 10, 20);
   text("Coins collected: " + currentCoins, 10, 40);
 
@@ -171,18 +173,20 @@ void end() {
   int calc = currentScore + coins * 2;
 
   // end screen text
+  textAlign(CENTER);
   fill(0);
   textSize(50);
-  text("You lost! Try again?", 400, 250);
+  text("You lost! Try again?", width/2, 230);
   textSize(30);
-  text("Raw Score: " + currentScore, 550, 330);
-  text("Final Score: " + calc, 545, 380);
+  text("Raw Score: " + currentScore, width/2, 310);
+  text("Final Score: " + calc, width/2, 360);
   fill(255, 0, 0);
-  if (calcHighScore(calc)) text("New High Score!", 525, 430);
+  if (calcHighScore(calc)) text("New High Score!", width/2, 410);
   fill(0);
-  text("Press space to replay.", 485, 510);
+  text("Press space to replay.", width/2, 490);
   textSize(15);
-  text("High Score: " + highScore, 590, 550);
+  text("High Score: " + highScore, width/2, 530);
+  text("Total Coins: " + coins, width/2, 560);
 }
 
 boolean calcHighScore(int calc) {

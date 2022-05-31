@@ -13,6 +13,7 @@ public class Coin {
     
     stroke(50);
     fill(0);
+    textAlign(CENTER);
     text("C", x, y);
     fill(245, 215, 66);
     circle(x, y, 30);

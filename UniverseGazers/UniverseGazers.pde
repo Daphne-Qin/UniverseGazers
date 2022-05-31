@@ -108,8 +108,6 @@ void instructions() {
   text("- Avoid obstacles! One hit to an obstacle will kill you.", 640, 400);
   text("- Run into coins to collect them!", 640, 500);
   text("(Press space to begin game)", 640, 600);
-
-  textAlign(LEFT);
 }
 
 void game() {
@@ -156,16 +154,7 @@ void game() {
   if (Math.random() < 0.001) spawnCoins();
 
   // spawn Obstacles
-  double chance = Math.random();
-  if (chance < 0.015) {
-    if (Math.random() < 0.5) {
-      float y = (float)(Math.random()*(floor-ceiling-25)) + ceiling;
-      obstacleList.add(new Obstacle(1280, y, 100, 25));
-    } else {
-      float y = (float)(Math.random()*(floor-ceiling-100)) + ceiling;
-      obstacleList.add(new Obstacle(1280, y, 25, 100));
-    }
-  }
+  if (Math.random() < 0.015) spawnObstacles();
 
 
   // === increment score ===
@@ -234,7 +223,7 @@ void makeSpacemenList() {
 void spawnCoins() {
   int[][] layout = CoinLayouts.getArrangement();
   float firstX = 1295;
-  float firstY = ( (float)(Math.random()*20) ) * 30 + ceiling; // all layouts have 6 rows or less, so 30 is enough
+  float firstY = ( (float)(Math.random()*20) ) * 5 + ceiling + 15; // all layouts have 6 rows or less, so 30 is enough
 
   for (int i = 0; i < layout.length; i++) { // determines y
     for (int j = 0; j < layout[i].length; j++) { // determines x
@@ -244,5 +233,15 @@ void spawnCoins() {
         coinList.add(new Coin(x, y));
       }
     }
+  }
+}
+
+void spawnObstacles() {
+  if (Math.random() < 0.5) {
+    float y = (float)(Math.random()*(floor-ceiling-25)) + ceiling;
+    obstacleList.add(new Obstacle(1280, y, 100, 25));
+  } else {
+    float y = (float)(Math.random()*(floor-ceiling-100)) + ceiling;
+    obstacleList.add(new Obstacle(1280, y, 25, 100));
   }
 }

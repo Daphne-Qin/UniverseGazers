@@ -97,9 +97,18 @@ void startPage() {
 
 void instructions() {
   // to implement later
-
-  text("Hold down the space bar to move towards the top of the screen.", 100, 100);
-  text("Release to let gravity bring you down.", 100, 200);
+  
+  background(197, 231, 250);
+  textAlign(CENTER);
+  textSize(30);
+  text("The Four General Rules!", 640, 100);
+  text("- Hold down the space bar to move towards the top of the screen.", 640, 200);
+  text("- Release the space bar to let gravity bring you down.", 640, 300);
+  text("- Avoid obstacles! One hit to an obstacle will kill you.", 640, 400);
+  text("- Run into coins to collect them!", 640, 500);
+  text("(Press space to begin game)", 640, 600);
+  
+  textAlign(LEFT);
 }
 
 void game() {
@@ -143,13 +152,13 @@ void game() {
   
   // spawn Obstacles
   double chance = Math.random();
-    if (chance < 0.025){
+    if (chance < 0.01){
       if (Math.random() < 0.5){
-        float y = (float)(Math.random()*floor-ceiling) + ceiling-100;
+        float y = (float)(Math.random()*(floor-ceiling-25)) + ceiling;
         obstacleList.add(new Obstacle(1280, y, 100,25));
       }
       else{
-        float y = (float)(Math.random()*floor-ceiling) + ceiling-100;
+        float y = (float)(Math.random()*(floor-ceiling-100)) + ceiling;
         obstacleList.add(new Obstacle(1280, y, 25,100));
       }
    }

@@ -1,5 +1,5 @@
 public class Bullet{
-  private float x, y, dy;
+  private float x, y, dx, dy;
   
   public Bullet(float x, float y){
     this.x = x;

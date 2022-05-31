@@ -10,6 +10,8 @@ APCS Final Project
 [Prototype](https://docs.google.com/document/d/189F9OhO6VNhNR0iS9Ybe8OsrwMNg-A3QnAEKoP5iDC8/edit?usp=sharing) and [Original Gameplay](https://youtu.be/OhU7tLtOIgE)
 
 ## Development Log
+Note: To refer to `UniverseGazers.pde`, we use `Game` since that was the original name we had for the file in both our prototype document and the UML. Also, using "UniverseGazers" conflicts with the name of the entire game.
+
 ### June 13, 2022 (Due Date!)
 ### June 10-12, 2022
 ### June 9, 2022
@@ -21,16 +23,17 @@ APCS Final Project
 ### June 1, 2022
 ### May 31, 2022
 ### May 27-30, 2022 (Memorial Day Weekend combined with Friday)
-**Judy** imported an image within the `Game` class so that there would be a background whenever the game is started. She also wrote the `instructions()` method within the `Game` class. In order to display a randomized selection (orientation) of `Obstacle` objects as the game progresses, she wrote a loop within the `Game` class to continuously add obstacles to an `ArrayList` of `Obstacle`s. 
+**Judy** imported an image within the `Game` class so that there would be a background whenever the game is started. She also wrote the `instructions()` method within the `Game` class. In order to display a randomized selection (orientation) of `Obstacle` objects as the game progresses, she wrote a loop within the `Game` class to continuously add obstacles to an `ArrayList` of `Obstacle`s. She also introduced game scrolling acceleration by subtracting from `scrollLeft` (which uses negative numbers).
 
-**Daphne** revamped the `Coin` method so that it stores only one shape at a time, instead of an ArrayList of them. She also added `wid` and `ht` variables to `Obstacle` (and thus removed them from `Missle` since those were redundant). She implemented both `isTouchingCoin` (to add coins) and `isTouchingObstacle` (formerly `isTouching`, causes player death). She also organized the classes a bit.
+**Daphne** revamped the `Coin` method so that it stores only one shape at a time, instead of an ArrayList of them. She also added `wid` and `ht` variables to `Obstacle` (and thus removed them from `Missle` since those were redundant). She implemented both `isTouchingCoin` (to add coins) and `isTouchingObstacle` (formerly `isTouching`, causes player death). She added `CoinLayouts` to hard-code some of the layouts of the clumps of coins as they appear in Jetpack Joyride. She then introduced an (imperfect) algorithm that will prevent `Obstacles` from overlapping with `Coins` and other `Obstacles` (there's yet to be one for the `Coin` clumps). She also organized the classes a bit.
 
 **We** created the `demo` branch. Additionally, here's a more organized list of the changes we made.
 - Added a background
 - Revamp `Coin` class to store information for only one shape
-- Added deaths and coin-adding
+- Added deaths and coin-adding in clumps
+- Added Obstacle randomization and got rid of overlap
 - Generally organized placement of methods and added comments
-- We have our MVP! YAY! (well, minus the `Spacemen` objects but those contribute minimally to the mechanics of the game, if at all). This thing works the way we intended.
+- We have our MVP! YAY! (Well, minus the `Spacemen` objects but those contribute minimally to the mechanics of the game, if at all). It works the way we intended.
 
 ### May 26, 2022
 **Judy** worked on the `Game` and `Obstacle` class. I finished two constructors in the `Obstacle` class, and added one line of code to the `move()` method in the class. She also added 3 methods to the `Game` class, which include `makeObstacleList()`, `makeBulletList()`, and `makeSpacemenList()`.  Now, an `Obstacle` object appears when we run the program, but so far it doesn't move to the left yet.

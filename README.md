@@ -30,7 +30,7 @@ APCS Final Project
 - Revamp `Coin` class to store information for only one shape
 - Added deaths and coin-adding
 - Generally organized placement of methods and added comments
-- We have our MVP! YAY!
+- We have our MVP! YAY! (well, minus the `Spacemen` objects but those contribute minimally to the mechanics of the game, if at all). This thing works the way we intended.
 
 ### May 26, 2022
 **Judy** worked on the `Game` and `Obstacle` class. I finished two constructors in the `Obstacle` class, and added one line of code to the `move()` method in the class. She also added 3 methods to the `Game` class, which include `makeObstacleList()`, `makeBulletList()`, and `makeSpacemenList()`.  Now, an `Obstacle` object appears when we run the program, but so far it doesn't move to the left yet.

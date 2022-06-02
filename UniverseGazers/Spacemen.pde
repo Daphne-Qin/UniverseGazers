@@ -1,5 +1,4 @@
 public class Spacemen{
-  
   float x;
   float y;
   
@@ -14,7 +13,7 @@ public class Spacemen{
   }
   
   void move(){
-    x += scrollLeft;
+    x += scrollLeft + (float)(Math.random()*3)+5; // they need to move a bit to the right
   }
   
   boolean isTouchingBullet(Bullet b){

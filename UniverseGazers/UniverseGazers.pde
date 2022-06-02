@@ -10,6 +10,7 @@ ArrayList<Bullet> bulletList;
 ArrayList<Coin> coinList;
 ArrayList<Obstacle> obstacleList;
 ArrayList<Spacemen> spacemenList;
+ArrayList<Missile> missileList;
 
 // mode variables
 int mode;
@@ -73,6 +74,7 @@ void keyPressed() {
     makeCoinList();
     makeObstacleList();
     makeSpacemenList();
+    makeMissileList();
     currentScore = 0;
     scrollLeft = -5;
     mode = GAME;
@@ -155,12 +157,21 @@ void game() {
     s.display();
     s.move();
   }
+  
+  for (int k = 0; k < missileList.size(); k ++){
+    Missile m = missileList.get(k);
+    m.display();
+    m.move();
+  }
 
   // spawn Coins
   if (Math.random() < 0.0025) spawnCoins();
 
   // spawn Obstacles
   if (Math.random() < 0.015) spawnObstacles();
+  
+  // spawn missiles
+  if (Math.random() < 1) spawnMissiles();
   
   // spawn Spacemen
   // frequency TBD
@@ -231,6 +242,10 @@ void makeSpacemenList() {
   spacemenList = new ArrayList<Spacemen>();
 }
 
+void makeMissileList(){
+  missileList = new ArrayList<Missile>();
+}
+
 void spawnCoins() {
   int[][] layout = CoinLayouts.getArrangement();
   float firstX = 1295;
@@ -282,4 +297,10 @@ void spawnObstacles() {
 void spawnSpacemen(){
   Spacemen man = new Spacemen(1280);
   spacemenList.add(man);
+}
+
+void spawnMissiles(){
+  float randY = (float)(Math.random()*(floor-ceiling-25)) + ceiling;
+  Missile missile = new Missile(1280.0, randY, 100, 20);
+  missileList.add(missile);
 }

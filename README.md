@@ -20,6 +20,8 @@ Note: To refer to `UniverseGazers.pde`, we use `Game` since that was the origina
 ### June 6, 2022
 ### June 3, 2022
 ### June 2, 2022
+**Judy (who is still out due to COVID)** completed the code needed for `Missile`s to fly across the screen and kill the player when they come in contact. She set a frequency for the `Missile`s and made them fly across quicker than regular `Obstacle`s. Her plan for `Missile` objects is to eventually give the player a warning sign right before they fly across.
+
 ### June 1, 2022
 **Judy (who is still out due to COVID)** completed all the code needed for functional `Spacemen` objects. The general mechanics of these objects are completed, aside from their relationship to `Bullet` objects. Also, she made the decision to override the `move()` method in `Obstacle` with a new `move()` method in `Missile` that would make objects bob up and down as they fly left. She started on writing this method.
 

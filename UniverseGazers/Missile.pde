@@ -5,7 +5,8 @@ public class Missile extends Obstacle {
   }
 
   void display(){
-    rect(getX(), getY(), getWidth(), getHeight());
+    fill(255,46,119);
+    ellipse(getX(), getY(), getWidth(),getHeight());
   }
 
   // Missle inherits Obstacle move()
@@ -14,7 +15,8 @@ public class Missile extends Obstacle {
   void move(){
     super.move();
     float bob = 30;
-    //Missile.getY() += bob;
+    float yLocal = getY();
+    yLocal += bob;
     if (getX() % 20 == 0){
      bob = -bob;
     }

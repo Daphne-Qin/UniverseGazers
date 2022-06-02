@@ -9,4 +9,15 @@ public class Missile extends Obstacle {
   }
 
   // Missle inherits Obstacle move()
+  // actually nevermind, going to make the missiles bob up and down as they move across the screen
+  
+  void move(){
+    super.move();
+    float bob = 30;
+    //Missile.getY() += bob;
+    if (getX() % 20 == 0){
+     bob = -bob;
+    }
+  }
+  
 }

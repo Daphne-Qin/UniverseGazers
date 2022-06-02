@@ -164,7 +164,7 @@ void game() {
 
   // spawn Spacemen
   // frequency TBD
-  if (Math.random() < 0.015) spawnSpacemen();
+  if (Math.random() < 0.01) spawnSpacemen();
 
 
   // === increment score and speed ===
@@ -297,7 +297,7 @@ void spawnObstacles() {
   obstacleList.add(o);
 }
 
-void spawnSpacemen() {
-  //Spacemen man = new Spacemen(1280, scrollLeft);
-  //spacemenList.add(man);
+void spawnSpacemen(){
+  Spacemen man = new Spacemen(1280);
+  spacemenList.add(man);
 }

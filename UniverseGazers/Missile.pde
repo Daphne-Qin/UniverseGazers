@@ -11,15 +11,12 @@ public class Missile extends Obstacle {
 
   // Missle inherits Obstacle move()
   // actually nevermind, going to make the missiles bob up and down as they move across the screen
+  // and move faster
   
   void move(){
-    super.move();
-    float bob = 30;
-    float yLocal = getY();
-    yLocal += bob;
-    if (getX() % 20 == 0){
-     bob = -bob;
-    }
+    float newScrollLeft = scrollLeft-10;
+    x += newScrollLeft;
+    // need to add viable code for bobbing up and down
   }
   
 }

@@ -162,6 +162,8 @@ void game() {
     Missile m = missileList.get(k);
     m.display();
     m.move();
+    
+    if (p.isTouchingObstacle(m)) mode = END;
   }
 
   // spawn Coins
@@ -169,14 +171,10 @@ void game() {
 
   // spawn Obstacles
   if (Math.random() < 0.015) spawnObstacles();
-<<<<<<< HEAD
   
   // spawn missiles
-  if (Math.random() < 1) spawnMissiles();
-  
-=======
+  if (Math.random() < 0.002) spawnMissiles();
 
->>>>>>> e97985e7b7d13e3dc37eaa31e74d25577a2069e9
   // spawn Spacemen
   // frequency TBD
   if (Math.random() < 0.01) spawnSpacemen();
@@ -317,13 +315,12 @@ void spawnObstacles() {
 }
 
 void spawnSpacemen(){
-  Spacemen man = new Spacemen(1280);
+  Spacemen man = new Spacemen(1295);
   spacemenList.add(man);
 }
 
 void spawnMissiles(){
   float randY = (float)(Math.random()*(floor-ceiling-25)) + ceiling;
-  Missile missile = new Missile(1280.0, randY, 100, 20);
+  Missile missile = new Missile(1280, randY, 100, 20);
   missileList.add(missile);
 }
-

@@ -21,6 +21,8 @@ Note: To refer to `UniverseGazers.pde`, we use `Game` since that was the origina
 ### June 3, 2022
 ### June 2, 2022
 ### June 1, 2022
+**Daphne** edited `spawnCoins()` to prevent newly added `Coins` from overlapping with `Obstacles` and other `Coins`.
+
 ### May 31, 2022
 **Judy (who is out due to COVID)** started to implement `Spacemen` objects into the `Game` class, but only completed about half or so of the code needed for functional `Spacemen` objects. She added a method in the `Spacemen` that checks whether a `Spacemen` object is touching a `Bullet` object. Additionally, she added accessor methods to the `Bullet` class and privatized the instance variables. Everything here has been merged into `main` branch.
 

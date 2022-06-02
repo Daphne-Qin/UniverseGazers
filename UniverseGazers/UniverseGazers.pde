@@ -24,6 +24,7 @@ final int ceiling = 50;
 final int floor = 670;
 float scrollLeft; // speed at which game elements moves left
 PImage bg; // background
+int countdown; // timer for laser display and game restart
 
 void setup() {
   size(1280, 720);
@@ -38,6 +39,9 @@ void setup() {
 
 void draw() {
   background(225);
+  
+  if (countdown > 0) countdown--;
+  
   switch (mode) {
   case STARTPAGE: 
     startPage();
@@ -49,7 +53,7 @@ void draw() {
     game();
     break;
   case END: 
-    end();
+    endPage();
     break;
   }
 
@@ -57,6 +61,7 @@ void draw() {
   textSize(10);
   fill(0);
   //text("Mode: " + mode, 10, 10);
+  
 }
 
 void keyPressed() {
@@ -69,7 +74,7 @@ void keyPressed() {
     }
   }
   // start the game
-  if (key == ' ' && mode != GAME) {
+  if (key == ' ' && mode != GAME && countdown == 0) {
     p = new Player(200, floor - 25);// 50 is the diameter
     makeCoinList();
     makeObstacleList();
@@ -81,7 +86,7 @@ void keyPressed() {
   }
 
   // end the game
-  if (key == 'e' && mode == GAME) mode = END;
+  if (key == 'e' && mode == GAME) end();
 }
 
 void startPage() {
@@ -137,7 +142,7 @@ void game() {
     o.move();
 
     // check for game end at the same time
-    if (p.isTouchingObstacle(o)) mode = END;
+    if (p.isTouchingObstacle(o)) end();
   }
 
   for (int i = 0; i < coinList.size(); i++) {
@@ -157,13 +162,13 @@ void game() {
     s.display();
     s.move();
   }
-  
-  for (int k = 0; k < missileList.size(); k ++){
+
+  for (int k = 0; k < missileList.size(); k ++) {
     Missile m = missileList.get(k);
     m.display();
     m.move();
-    
-    if (p.isTouchingObstacle(m)) mode = END;
+
+    if (p.isTouchingObstacle(m)) end();
   }
 
   // spawn Coins
@@ -171,7 +176,7 @@ void game() {
 
   // spawn Obstacles
   if (Math.random() < 0.015) spawnObstacles();
-  
+
   // spawn missiles
   if (Math.random() < 0.002) spawnMissiles();
 
@@ -186,6 +191,11 @@ void game() {
 }
 
 void end() {
+  mode = END;
+  countdown = 100;
+}
+
+void endPage() {
   stroke(0);
   fill(255);
   rect(width/2-500, height/2-250, 1000, 500);
@@ -244,7 +254,7 @@ void makeSpacemenList() {
   spacemenList = new ArrayList<Spacemen>();
 }
 
-void makeMissileList(){
+void makeMissileList() {
   missileList = new ArrayList<Missile>();
 }
 
@@ -314,12 +324,12 @@ void spawnObstacles() {
   obstacleList.add(o);
 }
 
-void spawnSpacemen(){
+void spawnSpacemen() {
   Spacemen man = new Spacemen(1295);
   spacemenList.add(man);
 }
 
-void spawnMissiles(){
+void spawnMissiles() {
   float randY = (float)(Math.random()*(floor-ceiling-25)) + ceiling;
   Missile missile = new Missile(1280, randY, 100, 20);
   missileList.add(missile);

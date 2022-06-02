@@ -10,6 +10,7 @@ ArrayList<Bullet> bulletList;
 ArrayList<Coin> coinList;
 ArrayList<Obstacle> obstacleList;
 ArrayList<Spacemen> spacemenList;
+ArrayList<Missile> missileList;
 
 // mode variables
 int mode;
@@ -73,6 +74,7 @@ void keyPressed() {
     makeCoinList();
     makeObstacleList();
     makeSpacemenList();
+    makeMissileList();
     currentScore = 0;
     scrollLeft = -5;
     mode = GAME;
@@ -149,11 +151,17 @@ void game() {
       currentCoins++;
     }
   }
-  
-  for (int j = 0; j < spacemenList.size(); j ++){
+
+  for (int j = 0; j < spacemenList.size(); j ++) {
     Spacemen s = spacemenList.get(j);
     s.display();
     s.move();
+  }
+  
+  for (int k = 0; k < missileList.size(); k ++){
+    Missile m = missileList.get(k);
+    m.display();
+    m.move();
   }
 
   // spawn Coins
@@ -161,7 +169,14 @@ void game() {
 
   // spawn Obstacles
   if (Math.random() < 0.015) spawnObstacles();
+<<<<<<< HEAD
   
+  // spawn missiles
+  if (Math.random() < 1) spawnMissiles();
+  
+=======
+
+>>>>>>> e97985e7b7d13e3dc37eaa31e74d25577a2069e9
   // spawn Spacemen
   // frequency TBD
   if (Math.random() < 0.01) spawnSpacemen();
@@ -231,10 +246,32 @@ void makeSpacemenList() {
   spacemenList = new ArrayList<Spacemen>();
 }
 
+void makeMissileList(){
+  missileList = new ArrayList<Missile>();
+}
+
 void spawnCoins() {
   int[][] layout = CoinLayouts.getArrangement();
   float firstX = 1295;
   float firstY = ( (float)(Math.random()*20) ) * 5 + ceiling + 15; // all layouts have 6 rows or less, so 30 is enough
+
+  // check for Coin or Obstacle overlaps within 200 px
+  for (int i = 0; i < layout.length; i++) { // determines y
+    for (int j = 0; j < layout[i].length; j++) { // determines x
+      float x = firstX + j * 30;
+      float y = firstY + i * 30;
+
+      for (Coin c : coinList) { // check for overlap with Coins
+        float d = dist(x, y, c.getX(), c.getY());
+        if (d <= 200) return;
+      }
+
+      for (Obstacle o : obstacleList) { // check for overlap with Obstacles
+        float d = dist(x, y, o.getX()+o.getWidth()/2, o.getY()+o.getHeight()/2);
+        if (d <= 200) return;
+      }
+    }
+  }
 
   for (int i = 0; i < layout.length; i++) { // determines y
     for (int j = 0; j < layout[i].length; j++) { // determines x
@@ -283,3 +320,10 @@ void spawnSpacemen(){
   Spacemen man = new Spacemen(1280);
   spacemenList.add(man);
 }
+
+void spawnMissiles(){
+  float randY = (float)(Math.random()*(floor-ceiling-25)) + ceiling;
+  Missile missile = new Missile(1280.0, randY, 100, 20);
+  missileList.add(missile);
+}
+

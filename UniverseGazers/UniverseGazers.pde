@@ -151,8 +151,8 @@ void game() {
       currentCoins++;
     }
   }
-  
-  for (int j = 0; j < spacemenList.size(); j ++){
+
+  for (int j = 0; j < spacemenList.size(); j ++) {
     Spacemen s = spacemenList.get(j);
     s.display();
     s.move();
@@ -169,10 +169,14 @@ void game() {
 
   // spawn Obstacles
   if (Math.random() < 0.015) spawnObstacles();
+<<<<<<< HEAD
   
   // spawn missiles
   if (Math.random() < 1) spawnMissiles();
   
+=======
+
+>>>>>>> e97985e7b7d13e3dc37eaa31e74d25577a2069e9
   // spawn Spacemen
   // frequency TBD
   if (Math.random() < 0.01) spawnSpacemen();
@@ -250,6 +254,24 @@ void spawnCoins() {
   int[][] layout = CoinLayouts.getArrangement();
   float firstX = 1295;
   float firstY = ( (float)(Math.random()*20) ) * 5 + ceiling + 15; // all layouts have 6 rows or less, so 30 is enough
+
+  // check for Coin or Obstacle overlaps within 200 px
+  for (int i = 0; i < layout.length; i++) { // determines y
+    for (int j = 0; j < layout[i].length; j++) { // determines x
+      float x = firstX + j * 30;
+      float y = firstY + i * 30;
+
+      for (Coin c : coinList) { // check for overlap with Coins
+        float d = dist(x, y, c.getX(), c.getY());
+        if (d <= 200) return;
+      }
+
+      for (Obstacle o : obstacleList) { // check for overlap with Obstacles
+        float d = dist(x, y, o.getX()+o.getWidth()/2, o.getY()+o.getHeight()/2);
+        if (d <= 200) return;
+      }
+    }
+  }
 
   for (int i = 0; i < layout.length; i++) { // determines y
     for (int j = 0; j < layout[i].length; j++) { // determines x

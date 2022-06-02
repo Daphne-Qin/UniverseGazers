@@ -1,5 +1,5 @@
 public class Obstacle{
-  private float x, y, dy;
+  float x, y, dy;
   private int wid, ht;
   
   public Obstacle(){

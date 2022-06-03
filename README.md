@@ -26,7 +26,7 @@ Note: To refer to `UniverseGazers.pde`, we use `Game` since that was the origina
 - lots and lots of comments
 - `countdown` variable added
 - ending mechanism changed:
-  - <u>Purpose</u>: this fixes the bug where, if you were holding space when you died, you would automatically start a new game without seeing the end screen)
+  - <ins>Purpose</ins>: this fixes the bug where, if you were holding space when you died, you would automatically start a new game without seeing the end screen)
   - the old `end()` is now called `endPage()`
   - the new `end` sets the mode to `END` (thus calling `endPage()`), then sets `countdown` to `1000`
   - `keyPressed()` will not let you start a new game unless `countdown` is `0`

@@ -1,3 +1,8 @@
+//================================================================================
+// VARIABLES
+//================================================================================
+
+// Player character
 Player p;
 
 // stat variables
@@ -6,11 +11,13 @@ int currentScore;
 int coins;
 int currentCoins;
 
+// game element ArrayLists
 ArrayList<Bullet> bulletList;
 ArrayList<Coin> coinList;
+ArrayList<Laser> laserList;
+ArrayList<Missile> missileList;
 ArrayList<Obstacle> obstacleList;
 ArrayList<Spacemen> spacemenList;
-ArrayList<Missile> missileList;
 
 // mode variables
 int mode;
@@ -26,6 +33,12 @@ float scrollLeft; // speed at which game elements moves left
 PImage bg; // background
 int countdown; // timer for laser display and game restart
 
+
+
+//================================================================================
+// SKELETON - SETUP, DRAW
+//================================================================================
+
 void setup() {
   size(1280, 720);
   background(225);
@@ -39,9 +52,9 @@ void setup() {
 
 void draw() {
   background(225);
-  
+
   if (countdown > 0) countdown--;
-  
+
   switch (mode) {
   case STARTPAGE: 
     startPage();
@@ -61,8 +74,13 @@ void draw() {
   textSize(10);
   fill(0);
   //text("Mode: " + mode, 10, 10);
-  
 }
+
+
+
+//================================================================================
+// USER INPUT + GAMESTART (SPACE KEY)
+//================================================================================
 
 void keyPressed() {
   // go to instructions
@@ -76,10 +94,7 @@ void keyPressed() {
   // start the game
   if (key == ' ' && mode != GAME && countdown == 0) {
     p = new Player(200, floor - 25);// 50 is the diameter
-    makeCoinList();
-    makeObstacleList();
-    makeSpacemenList();
-    makeMissileList();
+    makeLists();
     currentScore = 0;
     scrollLeft = -5;
     mode = GAME;
@@ -88,6 +103,12 @@ void keyPressed() {
   // end the game
   if (key == 'e' && mode == GAME) end();
 }
+
+
+
+//================================================================================
+// MODES
+//================================================================================
 
 void startPage() {
   stroke(0);
@@ -105,8 +126,6 @@ void startPage() {
 }
 
 void instructions() {
-  // to implement later
-
   background(197, 231, 250);
   textAlign(CENTER);
   textSize(30);
@@ -121,8 +140,6 @@ void instructions() {
 void game() {
   // display floor, ceiling, currentScore, coins
   image(bg, 0, 0);
-
-  // display floor, ceiling, currentScore, coins
   fill(255);
   rect(0, 0, width, ceiling); // ceiling
   rect(0, floor, width, ceiling); // floor
@@ -134,54 +151,16 @@ void game() {
 
 
   // === move all elements ===
-  p.move();
-  p.display();
+  moveElements();
 
-  for (Obstacle o : obstacleList) {
-    o.display();
-    o.move();
-
-    // check for game end at the same time
-    if (p.isTouchingObstacle(o)) end();
-  }
-
-  for (int i = 0; i < coinList.size(); i++) {
-    Coin c = coinList.get(i);
-    c.display();
-    c.move();
-
-    // add coins at the same time
-    if (p.isTouchingCoin(c)) {
-      coinList.remove(c);
-      currentCoins++;
-    }
-  }
-
-  for (int j = 0; j < spacemenList.size(); j ++) {
-    Spacemen s = spacemenList.get(j);
-    s.display();
-    s.move();
-  }
-
-  for (int k = 0; k < missileList.size(); k ++) {
-    Missile m = missileList.get(k);
-    m.display();
-    m.move();
-
-    if (p.isTouchingObstacle(m)) end();
-  }
-
-  // spawn Coins
+  // === spawn elements ===
+  // spawn coins
   if (Math.random() < 0.0025) spawnCoins();
-
-  // spawn Obstacles
-  if (Math.random() < 0.015) spawnObstacles();
-
   // spawn missiles
   if (Math.random() < 0.002) spawnMissiles();
-
+  // spawn Obstacles
+  if (Math.random() < 0.015) spawnObstacles();
   // spawn Spacemen
-  // frequency TBD
   if (Math.random() < 0.01) spawnSpacemen();
 
 
@@ -221,6 +200,12 @@ void endPage() {
   text("Total Coins: " + coins, width/2, 560);
 }
 
+
+
+//================================================================================
+// VARIABLES
+//================================================================================
+
 boolean calcHighScore(int calc) {
   if (calc >= highScore) { // highScore changed
     highScore = calc;
@@ -238,25 +223,82 @@ void setMode(int modeNum) {
   mode = modeNum;
 }
 
-void makeBulletList() {
+void setScrollLeft(float val) {
+  scrollLeft = scrollLeft + val;
+}
+
+
+
+//================================================================================
+// ARRAYLIST HELPER METHODS
+//================================================================================
+
+// initializes the various ArrayLists (new one initialized every game)
+void makeLists() {
   bulletList = new ArrayList<Bullet>();
-}
-
-void makeCoinList() {
   coinList = new ArrayList<Coin>();
-}
-
-void makeObstacleList() {
+  laserList = new ArrayList<Laser>();
+  missileList = new ArrayList<Missile>();
   obstacleList = new ArrayList<Obstacle>();
-}
-
-void makeSpacemenList() {
   spacemenList = new ArrayList<Spacemen>();
 }
 
-void makeMissileList() {
-  missileList = new ArrayList<Missile>();
+// moves all Objects within the various ArrayLists
+void moveElements() {
+  // Player
+  p.move();
+  p.display();
+
+  // General format: display, move, check if Player is touching it (if so game end or remove), check if it's off the screen and remove to save space
+
+  // Coins
+  for (int i = 0; i < coinList.size(); i++) {
+    Coin c = coinList.get(i);
+    c.display();
+    c.move();
+    // add coins at the same time
+    if (p.isTouchingCoin(c)) {
+      coinList.remove(c);
+      currentCoins++;
+    }
+    // get rid of it if it's to the left of the screen
+    if (c.getX() == -1000) coinList.remove(c);
+  }
+
+  // Missles
+  for (int i = 0; i < missileList.size(); i++) {
+    Missile m = missileList.get(i);
+    m.display();
+    m.move();
+    // check for game end at the same time
+    if (p.isTouchingObstacle(m)) end();
+    // get rid of it if it's to the left of the screen
+    if (m.getX() == -1000) missileList.remove(m);
+  }
+
+  // Obstacles
+  for (int i = 0; i < obstacleList.size(); i++) {
+    Obstacle o = obstacleList.get(i);
+    o.display();
+    o.move();
+    // check for game end at the same time
+    if (p.isTouchingObstacle(o)) end();
+    // get rid of it if it's to the left of the screen
+    if (o.getX() == -1000) obstacleList.remove(o);
+  }
+
+  // Spacemen
+  for (int i = 0; i < spacemenList.size(); i++) {
+    Spacemen s = spacemenList.get(i);
+    s.display();
+    s.move();
+    // get rid of it if it's to the left of the screen
+    if (s.getX() == -1000) spacemenList.remove(s);
+  }
 }
+
+
+// == spawning Objects within their respective ArrayLists ==
 
 void spawnCoins() {
   int[][] layout = CoinLayouts.getArrangement();
@@ -292,8 +334,10 @@ void spawnCoins() {
   }
 }
 
-void setScrollLeft(float val) {
-  scrollLeft = scrollLeft + val;
+void spawnMissiles() {
+  float randY = (float)(Math.random()*(floor-ceiling-25)) + ceiling;
+  Missile missile = new Missile(1280, randY, 100, 20);
+  missileList.add(missile);
 }
 
 void spawnObstacles() {
@@ -327,10 +371,4 @@ void spawnObstacles() {
 void spawnSpacemen() {
   Spacemen man = new Spacemen(1295);
   spacemenList.add(man);
-}
-
-void spawnMissiles() {
-  float randY = (float)(Math.random()*(floor-ceiling-25)) + ceiling;
-  Missile missile = new Missile(1280, randY, 100, 20);
-  missileList.add(missile);
 }

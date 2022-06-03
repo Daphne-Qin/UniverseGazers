@@ -22,7 +22,9 @@ Note: To refer to `UniverseGazers.pde`, we use `Game` since that was the origina
 ### June 2, 2022
 **Judy (who is still out due to COVID)** completed the code needed for `Missile`s to fly across the screen and kill the player when they come in contact. She set a frequency for the `Missile`s and made them fly across quicker than regular `Obstacle`s. Her plan for `Missile` objects is to eventually give the player a warning sign right before they fly across.
 
-**Daphne** tidied up both the `Game` and `CoinLayouts` classes. To `CoinLayouts`, she added two new layouts: `bigArrow` and `coins` (which displays "COINS!!!"). In the `Game` class, she also added a new variable called `countdown` to deal with the *space game immediate restart* bug, and she also added deletion of `Objects` in the `ArrayLists` once they scroll far to the left of the playable screen. In the `Spacemen` class, she added `getX()`. She also revamped the `Laser` code and plans on completing it tomorrow. Here's a full list of the `Game` class changes:
+**Daphne** tidied up both the `Game` and `CoinLayouts` classes. To `CoinLayouts`, she added two new layouts: `bigArrow` and `coins` (which displays "COINS!!!"). In the `Game` class, she also added a new variable called `countdown` to deal with the *space game immediate restart* bug, and she also added deletion of `Objects` in the `ArrayLists` once they scroll far to the left of the playable screen. In the `Spacemen` class, she added `getX()`. She also revamped the `Laser` code and plans on completing it tomorrow.
+
+Here's a full list of the `Game` class changes:
 - lots and lots of comments
 - `countdown` variable added
 - ending mechanism changed:

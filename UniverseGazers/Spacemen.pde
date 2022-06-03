@@ -19,4 +19,8 @@ public class Spacemen{
   boolean isTouchingBullet(Bullet b){
     return(b.getX() == x && b.getY() == y);
   }
+  
+  float getX() {
+    return x;
+  }
 }

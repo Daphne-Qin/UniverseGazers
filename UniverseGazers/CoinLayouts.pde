@@ -32,16 +32,41 @@ public static class CoinLayouts {
     {0, 0, 0, 1, 0, 0, 0}
   };
 
+  static final int[][] coins = new int[][]{
+    {0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1}, 
+    {1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1}, 
+    {1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1}, 
+    {1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0}, 
+    {0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1}
+  };
+
+  static final int[][] bigArrow = new int[][]{
+    {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0}, 
+    {0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0}, 
+    {0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0}, 
+    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0}, 
+    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 
+    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0}, 
+    {0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0}, 
+    {0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0}, 
+    {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0}
+  };
+
   static int[][] getArrangement() {
-    int chance = (int)(Math.random()*8)+1;
-    if (chance >= 1 && chance <= 5) {
-      return regular;
-    } else if (chance == 6) {
+    int chance = (int)(Math.random()*10)+1;
+    switch (chance) {
+    case 1: 
       return checkerboard1;
-    } else if (chance == 7) {
+    case 2: 
       return checkerboard2;
-    } else { // heart
+    case 3: 
       return heart;
+    case 4: 
+      return coins;
+    case 5:
+      return bigArrow;
+    default: 
+      return regular; // 5 to 9
     }
   }
 }

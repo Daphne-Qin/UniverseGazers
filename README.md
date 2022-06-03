@@ -22,6 +22,26 @@ Note: To refer to `UniverseGazers.pde`, we use `Game` since that was the origina
 ### June 2, 2022
 **Judy (who is still out due to COVID)** completed the code needed for `Missile`s to fly across the screen and kill the player when they come in contact. She set a frequency for the `Missile`s and made them fly across quicker than regular `Obstacle`s. Her plan for `Missile` objects is to eventually give the player a warning sign right before they fly across.
 
+**Daphne** tidied up both the `Game` and `CoinLayouts` classes. To `CoinLayouts`, she added two new layouts: `bigArrow` and `coins` (which displays "COINS!!!"). In the `Game` class, she also added a new variable called `countdown` to deal with the *space game immediate restart* bug, and she also added deletion of `Objects` in the `ArrayLists` once they scroll far to the left of the playable screen. In the `Spacemen` class, she added `getX()`. She also revamped the `Laser` code and plans on completing it tomorrow. Here's a full list of the `Game` class changes:
+- lots and lots of comments
+- `countdown` variable added
+- ending mechanism changed:
+  - <u>Purpose</u>: this fixes the bug where, if you were holding space when you died, you would automatically start a new game without seeing the end screen)
+  - the old `end()` is now called `endPage()`
+  - the new `end` sets the mode to `END` (thus calling `endPage()`), then sets `countdown` to `1000`
+  - `keyPressed()` will not let you start a new game unless `countdown` is `0`
+- `makeLists()` combines all of:
+  - `makeBulletList()`
+  - `makeCoinList()`
+  - `makeMissleList()`
+  - `makeObstacleList()`
+  - `makeSpacemenList()`
+- `game()` mechanism changed:
+  - `game()` calls upon `moveElements()` as a helper function
+  - `moveElements()` has all the `display()`/`move()`/`isTouching()` mechanisms (it was getting long and making `game()` harder to read)
+  - `Objects` in the various `ArrayLists` will now be removed if their x-coordinate is `-1000` (to save space and hopefully speed things up)
+    - Because of that, `Spacemen` has a new `getX()` accessor method
+
 ### June 1, 2022
 **Judy (who is still out due to COVID)** completed all the code needed for functional `Spacemen` objects. The general mechanics of these objects are completed, aside from their relationship to `Bullet` objects. Also, she made the decision to override the `move()` method in `Obstacle` with a new `move()` method in `Missile` that would make objects bob up and down as they fly left. She started on writing this method.
 

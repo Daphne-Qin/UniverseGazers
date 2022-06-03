@@ -1,27 +1,18 @@
 public class Laser extends Obstacle{
-  float x1;
-  float y1;
-  float x2;
-  float y2;
-
-  public Laser(float x1, float y1, float x2, float y2){
-    this.x1 = x1;
-    this.y1 = y1;
-    this.x2 = x2;
-    this.y2 = y2;
+  final int WARNINGTIME = 3000;
+  final int DISPLAYTIME = 1500;
+  
+  public Laser(float x, float y, int wid, int ht){
+    super(x, y, wid, ht);
   }
 
-  void display(){
-    strokeWeight(10);
-    stroke(255, 150, 0);
-    line(x1, y1, x2, y2);
-
-    // reset stroke to not mess with other elements
-    strokeWeight(1);
-    stroke(0);
+  void display() {
+    super.display();
   }
 
   // move() does nothing here, lasers stay in place
   @Override
   void move() {}
+  
+  // getX(), getY(), getWidth(), getHeight() are inherited; dy = 0
 }

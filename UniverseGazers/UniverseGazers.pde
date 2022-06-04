@@ -372,3 +372,11 @@ void spawnSpacemen() {
   Spacemen man = new Spacemen(1295);
   spacemenList.add(man);
 }
+
+void spawnBullets(){
+  //
+}
+
+void spawnLasers(){
+  //Laser laser = new Laser( - Judy isn't sure what x, y, wid, and ht refer to here - )
+}

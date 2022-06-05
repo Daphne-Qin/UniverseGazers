@@ -12,11 +12,11 @@ public class Coin {
     // 0 as a filler value;
     
     stroke(50);
-    fill(0);
-    textAlign(CENTER);
-    text("C", x, y);
     fill(245, 215, 66);
     circle(x, y, 30);
+    fill(204, 102, 0);
+    textAlign(CENTER);
+    text("C", x, y+4);
   }
   
   void move() {

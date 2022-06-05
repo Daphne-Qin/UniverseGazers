@@ -31,7 +31,7 @@ final int ceiling = 50;
 final int floor = 670;
 float scrollLeft; // speed at which game elements moves left
 PImage bg; // background
-int countdown; // timer for laser display and game restart
+private int countdown; // timer for game restart
 
 
 
@@ -54,6 +54,7 @@ void draw() {
   background(225);
 
   if (countdown > 0) countdown--;
+  //System.out.println(countdown);
 
   switch (mode) {
   case STARTPAGE: 
@@ -154,9 +155,11 @@ void game() {
   moveElements();
 
   // === spawn elements ===
-  // spawn coins
+  // spawn Coins
   if (Math.random() < 0.0025) spawnCoins();
-  // spawn missiles
+  // spawn Lasers
+  if (Math.random() < 0.001) spawnLasers();
+  // spawn Missiles
   if (Math.random() < 0.002) spawnMissiles();
   // spawn Obstacles
   if (Math.random() < 0.015) spawnObstacles();
@@ -254,8 +257,8 @@ void moveElements() {
   // Coins
   for (int i = 0; i < coinList.size(); i++) {
     Coin c = coinList.get(i);
-    c.display();
     c.move();
+    c.display();
     // add coins at the same time
     if (p.isTouchingCoin(c)) {
       coinList.remove(c);
@@ -265,11 +268,25 @@ void moveElements() {
     if (c.getX() == -1000) coinList.remove(c);
   }
 
+  // Lasers
+  for (int i = 0; i < laserList.size(); i++) {
+    Laser l = laserList.get(i);
+    l.display();
+    // check for game end at the same time
+    if (p.isTouchingObstacle(l)) end();
+
+    if (l.getCountdown() == 0) { // get rid of it if its countdown is at 0
+      laserList.remove(l);
+    } else { // decrease countdown by 1
+      l.decreaseCountdown();
+    }
+  }
+
   // Missles
   for (int i = 0; i < missileList.size(); i++) {
     Missile m = missileList.get(i);
-    m.display();
     m.move();
+    m.display();
     // check for game end at the same time
     if (p.isTouchingObstacle(m)) end();
     // get rid of it if it's to the left of the screen
@@ -279,8 +296,8 @@ void moveElements() {
   // Obstacles
   for (int i = 0; i < obstacleList.size(); i++) {
     Obstacle o = obstacleList.get(i);
-    o.display();
     o.move();
+    o.display();
     // check for game end at the same time
     if (p.isTouchingObstacle(o)) end();
     // get rid of it if it's to the left of the screen
@@ -290,8 +307,8 @@ void moveElements() {
   // Spacemen
   for (int i = 0; i < spacemenList.size(); i++) {
     Spacemen s = spacemenList.get(i);
-    s.display();
     s.move();
+    s.display();
     // get rid of it if it's to the left of the screen
     if (s.getX() == -1000) spacemenList.remove(s);
   }
@@ -332,6 +349,11 @@ void spawnCoins() {
       }
     }
   }
+}
+
+void spawnLasers() {
+  if (laserList.size() != 0) return;
+  laserList.add(new Laser(50, ceiling+50));
 }
 
 void spawnMissiles() {

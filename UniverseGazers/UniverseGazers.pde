@@ -158,7 +158,7 @@ void game() {
   // spawn Coins
   if (Math.random() < 0.0025) spawnCoins();
   // spawn Lasers
-  if (Math.random() < 0.001) spawnLasers();
+  //if (Math.random() < 0.001) spawnLasers();
   // spawn Missiles
   if (Math.random() < 0.002) spawnMissiles();
   // spawn Obstacles
@@ -353,7 +353,12 @@ void spawnCoins() {
 
 void spawnLasers() {
   if (laserList.size() != 0) return;
-  laserList.add(new Laser(50, ceiling+50));
+  // 7 total Laser positionings in total, determine which show up
+  for (int i = 0; i < 7; i++) {
+    if (Math.random() < Math.pow(0.5, laserList.size()+1)) {
+      laserList.add(new Laser(50, ceiling + 25 + 85*i));
+    }
+  }
 }
 
 void spawnMissiles() {

@@ -7,7 +7,9 @@ public class Laser extends Obstacle{
   }
 
   void display() {
-    super.display();
+    fill(255,46,119);
+    strokeWeight(10);
+    line(140, 600, 1140, 600);
   }
 
   // move() does nothing here, lasers stay in place

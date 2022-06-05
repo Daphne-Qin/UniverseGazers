@@ -21,6 +21,8 @@ Note: To refer to `UniverseGazers.pde`, we use `Game` since that was the origina
 ### June 3-5, 2022 (Friday and the weekend)
 **Judy (who was out on Friday but will be back on the 6th)** added headers for `spawnLasers()` and `spawnBullets()`, and edited the `display()` method for the `Laser`, `Bullet`, and `Coin` class to account for beautification (adding a "C" to the center of each `Coin`) and distinction (making `Laser`s lines instead of rectangles). She also merged her branch into `main` branch.
 
+**Daphne** worked on displaying and placing `Lasers`. She implemented a `countdown` variable inside of `Laser`, and when it reaches `0` then the `Game` class will remove it. She also coded `spawnLasers()` so that `Laser`s won't spawn if there's already active `Laser`s and so that there can be multiple `Laser`s at once (with decreasing probability of higher numbers of `Laser`s).
+
 ### June 2, 2022
 **Judy (who is still out due to COVID)** completed the code needed for `Missile`s to fly across the screen and kill the player when they come in contact. She set a frequency for the `Missile`s and made them fly across quicker than regular `Obstacle`s. Her plan for `Missile` objects is to eventually give the player a warning sign right before they fly across.
 

@@ -158,7 +158,7 @@ void game() {
   // spawn Coins
   if (Math.random() < 0.0025) spawnCoins();
   // spawn Lasers
-  //if (Math.random() < 0.001) spawnLasers();
+  if (Math.random() < 0.001) spawnLasers();
   // spawn Missiles
   if (Math.random() < 0.002) spawnMissiles();
   // spawn Obstacles

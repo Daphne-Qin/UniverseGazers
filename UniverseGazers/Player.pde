@@ -51,6 +51,14 @@ public class Player{
   
   // may have to edit to accomodate for missile and laser
   boolean isTouchingObstacle(Obstacle o){
+    // check for Laser warning time
+    String obstacleType = o.getClass().getSimpleName();
+    if (obstacleType.equals("Laser")) {
+      Laser l = (Laser)o;
+      if (l.getCountdown() >= 200) return false;
+    }
+    
+    // check dimensions
     boolean horizontal = (x + 25 >= o.getX() && x - 25 <= o.getX()+o.getWidth());
     boolean vertical = (y + 25 >= o.getY() && y - 25 <= o.getY()+o.getHeight());
     return (horizontal && vertical);

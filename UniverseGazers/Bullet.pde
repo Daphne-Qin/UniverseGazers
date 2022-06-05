@@ -8,10 +8,14 @@ public class Bullet{
   }
   
   void display(){
-    rect(x, y, (int)(Math.random()*30+1), (int)(Math.random()*320+1));
+    fill(120,52,34);
+    //not sure why we're using rects
+    //rect(x, y, (int)(Math.random()*30+1), (int)(Math.random()*320+1));
+    ellipse(x,y,15,7.5);
   }
   
   void move(){
+    // should shoot out in 3 directions but from the same x and y coordinates
   }
   
   boolean isTouchingCoin(){

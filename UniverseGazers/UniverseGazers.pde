@@ -399,3 +399,7 @@ void spawnSpacemen() {
   Spacemen man = new Spacemen(1295);
   spacemenList.add(man);
 }
+
+void spawnBullets(){
+  //
+}

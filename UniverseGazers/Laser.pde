@@ -1,5 +1,5 @@
 public class Laser extends Obstacle {  
-  private final static int DANGERTIME = 200;
+  private final static int DANGERTIME = 130;
   private final static int WARNINGTIME = DANGERTIME * 2;
   private final static int APPEAR = DANGERTIME * 3;
   private int countdown;

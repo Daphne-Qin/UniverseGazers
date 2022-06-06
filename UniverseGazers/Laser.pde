@@ -10,7 +10,7 @@ public class Laser extends Obstacle {
   }
 
   public Laser(float x, float y) {
-    this(x, y, 1180, 50);
+    this(x, y, 1180, 20);
   }
 
   void display() {

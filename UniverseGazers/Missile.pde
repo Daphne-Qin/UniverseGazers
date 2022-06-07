@@ -5,6 +5,8 @@ public class Missile extends Obstacle {
   }
 
   void display(){
+    fill(255, 172, 200);
+    ellipse(getX(), getY(), getWidth() + 10, getHeight()+10);
     fill(255,46,119);
     ellipse(getX(), getY(), getWidth(),getHeight());
   }

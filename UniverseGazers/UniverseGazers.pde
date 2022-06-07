@@ -174,7 +174,7 @@ void game() {
 
 void end() {
   mode = END;
-  countdown = 100;
+  countdown = 1;
 }
 
 void endPage() {

@@ -4,6 +4,7 @@ public class Player{
   private float dy;
   private float ACCELERATION;
   private float GRAVITY;
+  private boolean goingUp;
 
   public Player(float xval, float yval){
     x = xval;
@@ -31,8 +32,10 @@ public class Player{
     // modify dy based on direction
     if (keyPressed && key == ' ') {
       dy += ACCELERATION;
+      goingUp = true;
     } else {
       dy += GRAVITY;
+      goingUp = false;
     }
     
     // change y
@@ -74,5 +77,9 @@ public class Player{
 
   float getYSpeed(){
     return dy;
+  }
+  
+  boolean getGoingUp(){
+    return goingUp;
   }
 }

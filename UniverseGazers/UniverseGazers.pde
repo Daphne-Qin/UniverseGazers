@@ -314,13 +314,20 @@ void moveElements() {
   }
   
   // Bullets
-  
   for (int i = 0; i < bulletList.size(); i ++){
     Bullet b = bulletList.get(i);
     b.move();
     b.display();
-    
-    if (b.getY() == floor) bulletList.remove(b);
+    // check if it's touching a Coin
+    for (Coin c : coinList) {
+      if (b.isTouchingCoin(c)) {
+        bulletList.remove(b);
+        //coinList.remove(c);
+        currentCoins++;
+      }
+    }
+    // get rid of it if it's below the floor
+    if (b.getY() >= floor) bulletList.remove(b);
   }
 }
 

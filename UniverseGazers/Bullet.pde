@@ -31,4 +31,12 @@ public class Bullet{
     return y;
   }
   
+  float getdx(){
+    return dx;
+  }
+  
+  float getdy(){
+    return dy;
+  }
+  
 }

@@ -165,7 +165,7 @@ void game() {
   if (Math.random() < 0.015) spawnObstacles();
   // spawn Spacemen
   if (Math.random() < 0.01) spawnSpacemen();
-
+  if (p.getGoingUp()) spawnBullets();
 
   // === increment score and speed ===
   currentScore++;
@@ -312,6 +312,16 @@ void moveElements() {
     // get rid of it if it's to the left of the screen
     if (s.getX() == -1000) spacemenList.remove(s);
   }
+  
+  // Bullets
+  
+  for (int i = 0; i < bulletList.size(); i ++){
+    Bullet b = bulletList.get(i);
+    b.move();
+    b.display();
+    
+    if (b.getY() == floor) bulletList.remove(b);
+  }
 }
 
 
@@ -401,5 +411,6 @@ void spawnSpacemen() {
 }
 
 void spawnBullets(){
-  //
+  Bullet b = new Bullet(p.getX(), p.getY()+25);
+  bulletList.add(b);
 }

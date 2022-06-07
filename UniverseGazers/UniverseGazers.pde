@@ -319,15 +319,16 @@ void moveElements() {
     b.move();
     b.display();
     // check if it's touching a Coin
-    for (Coin c : coinList) {
+    for (int j = coinList.size()-1; j >= 0; j--) {
+      Coin c = coinList.get(j);
       if (b.isTouchingCoin(c)) {
         bulletList.remove(b);
-        //coinList.remove(c);
+        coinList.remove(c);
         currentCoins++;
       }
     }
     // get rid of it if it's below the floor
-    if (b.getY() >= floor) bulletList.remove(b);
+    if (b.getY() + b.getYSpeed() >= floor) bulletList.remove(b);
   }
 }
 

@@ -16,8 +16,10 @@ Note: To refer to `UniverseGazers.pde`, we use `Game` since that was the origina
 ### June 10-12, 2022
 ### June 9, 2022
 ### June 8, 2022
-### June 7, 2022
+### June 7, 2022 (also happens to be our demo date)
 ### June 6, 2022
+**Judy** added another instance variable to the `Player` class called `goingUp`, which is a boolean that tells us whether the Player is moving up or not. This was done to assist the `Bullet` mechanics (it only shoots out when the `Player` moves up); to get started on `Bullet` mechanics, she wrote the `spawnBullet()` method in `UniverseGazers` and a loop and conditional to call it appropriately. Furthermore, She also altered the `Missile` `display()` method such that each Missile would also have a lighter pink border, and made the `Laser`s skinner and have a smaller `DANGERTIME`. 
+
 ### June 3-5, 2022 (Friday and the weekend)
 **Judy (who was out on Friday but will be back on the 6th)** added headers for `spawnLasers()` and `spawnBullets()`, and edited the `display()` method for the `Laser`, `Bullet`, and `Coin` class to account for beautification (adding a "C" to the center of each `Coin`) and distinction (making `Laser`s lines instead of rectangles). She also merged her branch into `main` branch.
 

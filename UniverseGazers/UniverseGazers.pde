@@ -30,10 +30,11 @@ final int END = 3;
 final int ceiling = 50;
 final int floor = 670;
 float scrollLeft; // speed at which game elements moves left
-PImage bg; // background
 private int countdown; // timer for game restart
 
-
+// assets
+PImage bg; // background
+PImage obstacleImage;
 
 //================================================================================
 // SKELETON - SETUP, DRAW
@@ -45,7 +46,7 @@ void setup() {
   highScore = 0;
   coins = 0;
   scrollLeft = -5;
-  bg = loadImage("UniverseBackground.png");
+  initializeImages();
 
   mode = STARTPAGE;
 }
@@ -230,6 +231,13 @@ void setScrollLeft(float val) {
   scrollLeft = scrollLeft + val;
 }
 
+void initializeImages() {
+  // background
+  bg = loadImage("./Assets/UniverseBackground.png");
+  // Obstacles
+  obstacleImage = loadImage("./Assets/Obstacle.png");
+  obstacleImage.resize(25, 100);  
+}
 
 
 //================================================================================

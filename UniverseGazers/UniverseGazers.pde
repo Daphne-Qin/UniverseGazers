@@ -174,7 +174,7 @@ void game() {
 
 void end() {
   mode = END;
-  countdown = 100;
+  countdown = 1;
 }
 
 void endPage() {
@@ -314,13 +314,21 @@ void moveElements() {
   }
   
   // Bullets
-  
   for (int i = 0; i < bulletList.size(); i ++){
     Bullet b = bulletList.get(i);
     b.move();
     b.display();
-    
-    if (b.getY() == floor) bulletList.remove(b);
+    // check if it's touching a Coin
+    for (int j = coinList.size()-1; j >= 0; j--) {
+      Coin c = coinList.get(j);
+      if (b.isTouchingCoin(c)) {
+        bulletList.remove(b);
+        coinList.remove(c);
+        currentCoins++;
+      }
+    }
+    // get rid of it if it's below the floor
+    if (b.getY() + b.getYSpeed() >= floor) bulletList.remove(b);
   }
 }
 

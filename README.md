@@ -19,7 +19,7 @@ Note: To refer to `UniverseGazers.pde`, we use `Game` since that was the origina
 ### June 7, 2022 (also happens to be our demo date)
 **Judy** made the `Assets` folder and added two images for `Obstacle`s.
 
-**Daphne* fixed the `ConcurrentModificationException`. For `Bullet`s, she changed `getdx()` and `getdy()` to `getXSpeed()` and `getYSpeed()`, and randomized `dy` to be between 25 and 35.
+**Daphne** fixed the `ConcurrentModificationException`. For `Bullet`s, she changed `getdx()` and `getdy()` to `getXSpeed()` and `getYSpeed()`, and randomized `dy` to be between 25 and 35.
 
 **We** got on a Zoom call. Then we created a new helper method for the `setup()` method, which is called `initializeImages()`. We also created a new public variable called `obstacleImage`. Then, for the `Obstacle` class, we edited the `display()` method to replace the purple rectangles with upright `Obstalce`s (we have yet to do horizontal `Obstacle`s).
 

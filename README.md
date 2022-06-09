@@ -14,8 +14,7 @@ Note: To refer to `UniverseGazers.pde`, we use `Game` since that was the origina
 
 ### June 13, 2022 (Due Date!)
 ### June 10-12, 2022
-### June 9, 2022
-### June 8, 2022
+### June 8-9, 2022 (Combining 8 and 9 because we had no school on the 9th)
 ### June 7, 2022 (also happens to be our demo date)
 **Judy** made the `Assets` folder and added two images for `Obstacle`s.
 

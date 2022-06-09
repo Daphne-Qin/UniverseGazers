@@ -34,7 +34,8 @@ private int countdown; // timer for game restart
 
 // assets
 PImage bg; // background
-PImage obstacleImage;
+PImage obstacleImage; // obstacle
+PImage missileImage; // missile
 
 //================================================================================
 // SKELETON - SETUP, DRAW
@@ -236,7 +237,10 @@ void initializeImages() {
   bg = loadImage("./Assets/UniverseBackground.png");
   // Obstacles
   obstacleImage = loadImage("./Assets/Obstacle.png");
-  obstacleImage.resize(25, 100);  
+  obstacleImage.resize(50, 100); 
+  
+  missileImage = loadImage("./Assets/Missile.png");
+  missileImage.resize(100, 50); // need to resize
 }
 
 

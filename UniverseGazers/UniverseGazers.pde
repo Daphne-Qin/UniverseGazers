@@ -36,6 +36,8 @@ private int countdown; // timer for game restart
 PImage bg; // background
 PImage obstacleImage; // obstacle
 PImage missileImage; // missile
+PImage playerImage; // player
+PImage spacemenImage; // spacemen
 
 //================================================================================
 // SKELETON - SETUP, DRAW
@@ -235,12 +237,22 @@ void setScrollLeft(float val) {
 void initializeImages() {
   // background
   bg = loadImage("./Assets/UniverseBackground.png");
+  
   // Obstacles
   obstacleImage = loadImage("./Assets/Obstacle.png");
-  obstacleImage.resize(50, 100); 
+  obstacleImage.resize(100, 200); 
   
+  //Missiles
   missileImage = loadImage("./Assets/Missile.png");
   missileImage.resize(100, 50); // need to resize
+  
+  //Player
+  playerImage = loadImage("./Assets/Player.png");
+  playerImage.resize(70,70);
+  
+  //Spacemen
+  //spacemenImage = loadImage("./Assets/Spacemen.png");
+  //spacemenImage.resize(50,50);
 }
 
 

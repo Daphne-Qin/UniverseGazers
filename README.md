@@ -15,7 +15,9 @@ Note: To refer to `UniverseGazers.pde`, we use `Game` since that was the origina
 ### June 13, 2022 (Due Date!)
 ### June 10-12, 2022 (Friday and the Weekend)
 ### June 8-9, 2022 (Combining 8 and 9 because we had no school on the 9th)
-**Judy** added more images to the `Assets` folder, specifically the images for `Player`, `Missile`, and `Spacemen` objects. She also resized the images such that it would be more visible and beautified, but we have yet to alter the `isTouching()` methods to more appropriately accomodate the new sizes. As for `Spacemen` objects, she doesn't like the way the images look right now, so she'll figure that out later. She also changed the frequency of two objects. 
+**Judy** added more images to the `Assets` folder, specifically the images for `Player`, `Missile`, and `Spacemen` objects. She also resized the images such that it would be more visible and beautified, but we have yet to alter the `isTouching()` methods to more appropriately accomodate the new sizes. As for `Spacemen` objects, she doesn't like the way the images look right now, so she'll figure that out later. She also changed the frequency of two objects.
+
+**Daphne** changed the frequency and spacing of the bullets. She added the `countdown` variable to the `spawnBullets()` method and set it to 7 to reflect the frequency that they shoot out in the gamme. She also imported a `Coin` image and replaced the `Player` image to the sprite that's in the game. She then fixed the positioning issue for both `Player` and `Spacemen` (and had `Spacemen` display).
 
 **We** are focusing on beautification and smaller mechanical bugs.
 

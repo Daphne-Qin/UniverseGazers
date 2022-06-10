@@ -427,6 +427,8 @@ void spawnSpacemen() {
 }
 
 void spawnBullets(){
+  if (countdown != 0) return;
   Bullet b = new Bullet(p.getX(), p.getY()+25);
   bulletList.add(b);
+  countdown = 7;
 }

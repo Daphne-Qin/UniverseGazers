@@ -4,7 +4,7 @@ public class Bullet {
   public Bullet(float x, float y) {
     this.x = x;
     this.y = y;
-    dx = (int)(Math.random()*3) * (-0.05); // should shoot out in 3 directions but from the same x and y coordinates
+    dx = (int)(Math.random()*5) * (-1) + 3; // should shoot out in 3 directions but from the same x and y coordinates
     dy = (float)(Math.random()*10)+25;
   }
 

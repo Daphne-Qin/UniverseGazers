@@ -160,13 +160,13 @@ void game() {
 
   // === spawn elements ===
   // spawn Coins
-  if (Math.random() < 0.0025) spawnCoins();
+  if (Math.random() < 0.003) spawnCoins();
   // spawn Lasers
   if (Math.random() < 0.001) spawnLasers();
   // spawn Missiles
   if (Math.random() < 0.002) spawnMissiles();
   // spawn Obstacles
-  if (Math.random() < 0.015) spawnObstacles();
+  if (Math.random() < 0.008) spawnObstacles();
   // spawn Spacemen
   if (Math.random() < 0.01) spawnSpacemen();
   if (p.getGoingUp()) spawnBullets();

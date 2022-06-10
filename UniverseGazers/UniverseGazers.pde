@@ -59,7 +59,6 @@ void draw() {
   background(225);
 
   if (countdown > 0) countdown--;
-  //System.out.println(countdown);
 
   switch (mode) {
   case STARTPAGE: 
@@ -99,7 +98,7 @@ void keyPressed() {
   }
   // start the game
   if (key == ' ' && mode != GAME && countdown == 0) {
-    p = new Player(200, floor - 25);// 50 is the diameter
+    p = new Player(200, floor - playerImage.height/2, playerImage.height/2); // width and height are the same value here
     makeLists();
     currentScore = 0;
     scrollLeft = -5;
@@ -251,9 +250,9 @@ void initializeImages() {
   missileImage = loadImage("./assets/Missile.png");
   missileImage.resize(100, 50); // need to resize
   
-  //Player
+  //Missiles
   playerImage = loadImage("./assets/Player.png");
-  playerImage.resize(50,50);
+  playerImage.resize(50, 50);
   
   //Spacemen
   spacemenImage = loadImage("./assets/Spacemen.png");
@@ -392,7 +391,7 @@ void spawnCoins() {
       if (layout[i][j] == 1) {
         float x = firstX + j * 30;
         float y = firstY + i * 30;
-        coinList.add(new Coin(x, y));
+        coinList.add(new Coin(x, y, coinImage.width/2));
       }
     }
   }

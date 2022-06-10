@@ -1,13 +1,6 @@
 public class Obstacle{
   float x, y, dy;
-  private int wid, ht;
-  
-  public Obstacle(){
-    x = 1280;
-    y = (float)(Math.random()*floor-ceiling) + ceiling;
-    wid = (int)(Math.random()*50)+20;
-    ht = (int)(Math.random()*50)+20;
-  }
+  int wid, ht;
   
   public Obstacle(float xval, float yval, int wid, int ht){
     x = xval;

@@ -1,6 +1,6 @@
 public class Spacemen {
-  float x, y;
-  int wid, ht;
+  private float x, y;
+  private int wid, ht;
 
   public Spacemen(float x, int wid, int ht) {
     this.x = x;

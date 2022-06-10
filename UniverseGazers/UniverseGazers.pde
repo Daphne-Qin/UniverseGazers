@@ -6,10 +6,7 @@
 Player p;
 
 // stat variables
-int highScore;
-int currentScore;
-int coins;
-int currentCoins;
+int highScore, currentScore, coins, currentCoins;
 
 // game element ArrayLists
 ArrayList<Bullet> bulletList;
@@ -35,7 +32,7 @@ private int countdown; // timer for game restart
 // assets
 PImage bg; // background
 PImage coinImage; // obstacle
-PImage obstacleImage; // obstacle
+PImage obstacleImageHorizontal, obstacleImageVertical; // obstacle
 PImage missileImage; // missile
 PImage playerImage; // player
 PImage spacemenImage; // spacemen
@@ -188,7 +185,7 @@ void endPage() {
 
   coins += currentCoins;
   int calc = currentScore + currentCoins * 2;
-  currentCoins = 0; // to avoid calculating high score and total coins more than once
+  currentCoins = 0; // to avoid calculating high score and total coins more than once ***FIX LATER***
 
   // end screen text
   textAlign(CENTER);
@@ -243,18 +240,20 @@ void initializeImages() {
   coinImage.resize(30, 30); 
   
   // Obstacles
-  obstacleImage = loadImage("./assets/Obstacle.png");
-  obstacleImage.resize(100, 200); 
+  obstacleImageHorizontal = loadImage("./assets/ObstacleHorizontal.png");
+  obstacleImageHorizontal.resize(204, 78);
+  obstacleImageVertical = loadImage("./assets/ObstacleVertical.png");
+  obstacleImageVertical.resize(78, 204);
   
-  //Missiles
+  // Missiles
   missileImage = loadImage("./assets/Missile.png");
   missileImage.resize(100, 50); // need to resize
   
-  //Missiles
+  // Player
   playerImage = loadImage("./assets/Player.png");
   playerImage.resize(50, 50);
   
-  //Spacemen
+  // Spacemen
   spacemenImage = loadImage("./assets/Spacemen.png");
   spacemenImage.resize(50,50);
 }
@@ -425,10 +424,10 @@ void spawnMissiles() {
 
 void spawnObstacles() {
   // set the two Obstacle orientations
-  float y1 = (float)(Math.random()*(floor-ceiling-25)) + ceiling;
-  float y2 = (float)(Math.random()*(floor-ceiling-100)) + ceiling;
-  Obstacle o1 = new Obstacle(1280, y1, 100, 25);
-  Obstacle o2 = new Obstacle(1280, y2, 25, 100);
+  float y1 = (float)(Math.random()*(floor-ceiling-25)) + ceiling; // horizontal
+  float y2 = (float)(Math.random()*(floor-ceiling-100)) + ceiling; // vertical
+  Obstacle o1 = new Obstacle(1280, y1, 100, 25); // horizontal
+  Obstacle o2 = new Obstacle(1280, y2, 25, 100); // vertical
 
   // determine Obstacle type
   Obstacle o = (Math.random() < 0.5) ? o1 : o2;

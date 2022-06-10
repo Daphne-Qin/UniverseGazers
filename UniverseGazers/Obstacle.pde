@@ -2,17 +2,19 @@ public class Obstacle{
   float x, y, dy;
   int wid, ht;
   
-  public Obstacle(float xval, float yval, int wid, int ht){
-    x = xval;
-    y = yval;
+  public Obstacle(float x, float y, int wid, int ht){
+    this.x = x;
+    this.y = y;
     this.wid = wid;
     this.ht = ht;
   }
   
   void display(){
-    image(obstacleImage, x, y);
-    //fill(204, 143, 247);
-    //rect(x, y, wid, ht);
+    if (wid > ht) {
+      image(obstacleImageHorizontal, x, y);
+    } else {
+      image(obstacleImageVertical, x, y);
+    }
   }
   
   void move(){

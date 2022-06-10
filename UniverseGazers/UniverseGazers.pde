@@ -34,7 +34,10 @@ private int countdown; // timer for game restart
 
 // assets
 PImage bg; // background
-PImage obstacleImage;
+PImage obstacleImage; // obstacle
+PImage missileImage; // missile
+PImage playerImage; // player
+PImage spacemenImage; // spacemen
 
 //================================================================================
 // SKELETON - SETUP, DRAW
@@ -157,13 +160,13 @@ void game() {
 
   // === spawn elements ===
   // spawn Coins
-  if (Math.random() < 0.0025) spawnCoins();
+  if (Math.random() < 0.003) spawnCoins();
   // spawn Lasers
   if (Math.random() < 0.001) spawnLasers();
   // spawn Missiles
   if (Math.random() < 0.002) spawnMissiles();
   // spawn Obstacles
-  if (Math.random() < 0.015) spawnObstacles();
+  if (Math.random() < 0.008) spawnObstacles();
   // spawn Spacemen
   if (Math.random() < 0.01) spawnSpacemen();
   if (p.getGoingUp()) spawnBullets();
@@ -234,9 +237,22 @@ void setScrollLeft(float val) {
 void initializeImages() {
   // background
   bg = loadImage("./Assets/UniverseBackground.png");
+  
   // Obstacles
   obstacleImage = loadImage("./Assets/Obstacle.png");
-  obstacleImage.resize(25, 100);  
+  obstacleImage.resize(100, 200); 
+  
+  //Missiles
+  missileImage = loadImage("./Assets/Missile.png");
+  missileImage.resize(100, 50); // need to resize
+  
+  //Player
+  playerImage = loadImage("./Assets/Player.png");
+  playerImage.resize(70,70);
+  
+  //Spacemen
+  //spacemenImage = loadImage("./Assets/Spacemen.png");
+  //spacemenImage.resize(50,50);
 }
 
 

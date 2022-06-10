@@ -417,9 +417,9 @@ void spawnLasers() {
 }
 
 void spawnMissiles() {
-  float randY = (float)(Math.random()*(floor-ceiling-25)) + ceiling;
-  Missile missile = new Missile(1280, randY, 100, 20);
-  missileList.add(missile);
+  float randY = (float)(Math.random()*(floor-ceiling-missileImage.height)) + ceiling;
+  Missile m = new Missile(1280, randY, missileImage.width, missileImage.height);
+  missileList.add(m);
 }
 
 void spawnObstacles() {

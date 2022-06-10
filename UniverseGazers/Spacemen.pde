@@ -8,9 +8,9 @@ public class Spacemen{
   }
   
   void display(){
-    fill(100);
-    ellipse(x, y, 25, 40);
-    //image(spacemenImage, x, y);
+    //fill(100);
+    //ellipse(x, y, 25, 40);
+    image(spacemenImage, x-25, y-25);
   }
   
   void move(){

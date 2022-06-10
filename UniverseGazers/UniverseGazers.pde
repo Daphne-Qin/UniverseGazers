@@ -363,6 +363,13 @@ void moveElements() {
 
 // == spawning Objects within their respective ArrayLists ==
 
+void spawnBullets(){
+  if (countdown != 0) return;
+  Bullet b = new Bullet(p.getX(), p.getY()+25);
+  bulletList.add(b);
+  countdown = 7;
+}
+
 void spawnCoins() {
   int coinDiameter = coinImage.height;
   
@@ -387,7 +394,8 @@ void spawnCoins() {
       }
     }
   }
-
+  
+  // add all the coins
   for (int i = 0; i < layout.length; i++) { // determines y
     for (int j = 0; j < layout[i].length; j++) { // determines x
       if (layout[i][j] == 1) {
@@ -443,13 +451,14 @@ void spawnObstacles() {
 }
 
 void spawnSpacemen() {
-  Spacemen man = new Spacemen(1295);
+  Spacemen man = new Spacemen(width + spacemenImage.width, spacemenImage.width, spacemenImage.height);
+  
+  // check if Spacemen would overlap with other Spacemen within a 50 px distance
+  for (Spacemen s : spacemenList) {
+    float d = Math.abs(man.getX()+man.getWidth()/2 - s.getX()+s.getWidth()/2);
+    if (d <= 50) return;
+  }
+  
+  // add man
   spacemenList.add(man);
-}
-
-void spawnBullets(){
-  if (countdown != 0) return;
-  Bullet b = new Bullet(p.getX(), p.getY()+25);
-  bulletList.add(b);
-  countdown = 7;
 }

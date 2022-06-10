@@ -1,27 +1,35 @@
-public class Spacemen{
-  float x;
-  float y;
-  
-  public Spacemen(float xval){
-    x = xval;
-    y = floor - 20;
+public class Spacemen {
+  float x, y;
+  int wid, ht;
+
+  public Spacemen(float x, int wid, int ht) {
+    this.x = x;
+    this.y = floor - ht;
+    this.wid = wid;
+    this.ht = ht;
   }
-  
-  void display(){
-    //fill(100);
-    //ellipse(x, y, 25, 40);
-    image(spacemenImage, x-25, y-25);
+
+  void display() {
+    image(spacemenImage, x-wid, y);
   }
-  
-  void move(){
+
+  void move() {
     x += scrollLeft + (float)(Math.random()*3)+5; // they need to move a bit to the right
   }
-  
-  boolean isTouchingBullet(Bullet b){
+
+  boolean isTouchingBullet(Bullet b) {
     return(b.getX() == x && b.getY() == y);
   }
-  
+
   float getX() {
     return x;
   }
+  
+  int getWidth() {
+    return wid;
+  }
+  
+  int getHeight() {
+    return ht;
+  } 
 }

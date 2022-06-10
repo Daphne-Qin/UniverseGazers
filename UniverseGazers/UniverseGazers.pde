@@ -179,13 +179,13 @@ void game() {
 
 void end() {
   mode = END;
-  countdown = 1;
+  countdown = 50;
 }
 
 void endPage() {
   stroke(0);
   fill(255);
-  rect(width/2-500, height/2-250, 1000, 500);
+  rect(width/2-500, height/2-250, 1000, 500);       
 
   coins += currentCoins;
   int calc = currentScore + currentCoins * 2;

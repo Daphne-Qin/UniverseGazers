@@ -59,7 +59,7 @@ public class Player{
     String obstacleType = o.getClass().getSimpleName();
     if (obstacleType.equals("Laser")) {
       Laser l = (Laser)o;
-      if (l.getCountdown() >= 200) return false;
+      if (l.getCountdown() >= l.getDangerTime()) return false;
     }
     
     // check dimensions

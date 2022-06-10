@@ -364,15 +364,17 @@ void moveElements() {
 // == spawning Objects within their respective ArrayLists ==
 
 void spawnCoins() {
+  int coinDiameter = coinImage.height;
+  
   int[][] layout = CoinLayouts.getArrangement();
-  float firstX = 1295;
-  float firstY = ( (float)(Math.random()*20) ) * 5 + ceiling + 15; // all layouts have 6 rows or less, so 30 is enough
+  float firstX = width + coinDiameter/2; // spawns directly off-screen
+  float firstY = ( (float)(Math.random()*20) ) * 5 + ceiling + coinDiameter/2; // I forgot what exactly this algorithm was and it's imperfect, so I will redo it
 
   // check for Coin or Obstacle overlaps within 200 px
   for (int i = 0; i < layout.length; i++) { // determines y
     for (int j = 0; j < layout[i].length; j++) { // determines x
-      float x = firstX + j * 30;
-      float y = firstY + i * 30;
+      float x = firstX + j * coinDiameter;
+      float y = firstY + i * coinDiameter;
 
       for (Coin c : coinList) { // check for overlap with Coins
         float d = dist(x, y, c.getX(), c.getY());
@@ -389,9 +391,9 @@ void spawnCoins() {
   for (int i = 0; i < layout.length; i++) { // determines y
     for (int j = 0; j < layout[i].length; j++) { // determines x
       if (layout[i][j] == 1) {
-        float x = firstX + j * 30;
-        float y = firstY + i * 30;
-        coinList.add(new Coin(x, y, coinImage.width/2));
+        float x = firstX + j * coinDiameter;
+        float y = firstY + i * coinDiameter;
+        coinList.add(new Coin(x, y, coinDiameter/2));
       }
     }
   }
@@ -421,8 +423,7 @@ void spawnObstacles() {
   Obstacle o2 = new Obstacle(1280, y2, 25, 100);
 
   // determine Obstacle type
-  Obstacle o;
-  o = (Math.random() < 0.5) ? o1 : o2;
+  Obstacle o = (Math.random() < 0.5) ? o1 : o2;
 
   // check if the Obstacle would overlap with another Coin within a 200 px distance
   for (Coin c : coinList) {

@@ -241,9 +241,9 @@ void initializeImages() {
   
   // Obstacles
   obstacleImageHorizontal = loadImage("./assets/ObstacleHorizontal.png");
-  obstacleImageHorizontal.resize(204, 78);
+  obstacleImageHorizontal.resize(170, 65);
   obstacleImageVertical = loadImage("./assets/ObstacleVertical.png");
-  obstacleImageVertical.resize(78, 204);
+  obstacleImageVertical.resize(65, 170);
   
   // Missiles
   missileImage = loadImage("./assets/Missile.png");
@@ -424,10 +424,10 @@ void spawnMissiles() {
 
 void spawnObstacles() {
   // set the two Obstacle orientations
-  float y1 = (float)(Math.random()*(floor-ceiling-25)) + ceiling; // horizontal
-  float y2 = (float)(Math.random()*(floor-ceiling-100)) + ceiling; // vertical
-  Obstacle o1 = new Obstacle(1280, y1, 100, 25); // horizontal
-  Obstacle o2 = new Obstacle(1280, y2, 25, 100); // vertical
+  float y1 = (float)(Math.random()*(floor-ceiling-obstacleImageHorizontal.height)) + ceiling; // horizontal
+  float y2 = (float)(Math.random()*(floor-ceiling-obstacleImageVertical.height)) + ceiling; // vertical
+  Obstacle o1 = new Obstacle(1280, y1, obstacleImageHorizontal.width, obstacleImageHorizontal.height); // horizontal
+  Obstacle o2 = new Obstacle(1280, y2, obstacleImageVertical.width, obstacleImageVertical.height); // vertical
 
   // determine Obstacle type
   Obstacle o = (Math.random() < 0.5) ? o1 : o2;

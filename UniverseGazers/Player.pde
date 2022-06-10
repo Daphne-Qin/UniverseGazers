@@ -18,7 +18,7 @@ public class Player{
     // just using a circle for the player for now
     //fill(255,0,0);
     //circle(x, y, 50);
-    image(playerImage,x,y);
+    image(playerImage, x-25, y-25);
   }
 
   void move(){

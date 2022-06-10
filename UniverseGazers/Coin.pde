@@ -13,11 +13,12 @@ public class Coin {
 
     stroke(50);
     fill(245, 215, 66);
-    circle(x, y, 30);
-    fill(204, 102, 0);
-    textAlign(CENTER);
-    textSize(15);
-    text("C", x, y+4.5);
+    image(coinImage, x-15, y-15);
+    //circle(x, y, 30);
+    //fill(204, 102, 0);
+    //textAlign(CENTER);
+    //textSize(15);
+    //text("C", x, y+4.5);
   }
 
   void move() {

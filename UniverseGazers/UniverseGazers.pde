@@ -34,6 +34,7 @@ private int countdown; // timer for game restart
 
 // assets
 PImage bg; // background
+PImage coinImage; // obstacle
 PImage obstacleImage; // obstacle
 PImage missileImage; // missile
 PImage playerImage; // player
@@ -236,23 +237,27 @@ void setScrollLeft(float val) {
 
 void initializeImages() {
   // background
-  bg = loadImage("./Assets/UniverseBackground.png");
+  bg = loadImage("./assets/UniverseBackground.png");
+  
+  // Coins
+  coinImage = loadImage("./assets/Coin.png");
+  coinImage.resize(30, 30); 
   
   // Obstacles
-  obstacleImage = loadImage("./Assets/Obstacle.png");
+  obstacleImage = loadImage("./assets/Obstacle.png");
   obstacleImage.resize(100, 200); 
   
   //Missiles
-  missileImage = loadImage("./Assets/Missile.png");
+  missileImage = loadImage("./assets/Missile.png");
   missileImage.resize(100, 50); // need to resize
   
   //Player
-  playerImage = loadImage("./Assets/Player.png");
-  playerImage.resize(70,70);
+  playerImage = loadImage("./assets/Player.png");
+  playerImage.resize(50,50);
   
   //Spacemen
-  //spacemenImage = loadImage("./Assets/Spacemen.png");
-  //spacemenImage.resize(50,50);
+  spacemenImage = loadImage("./assets/Spacemen.png");
+  spacemenImage.resize(50,50);
 }
 
 

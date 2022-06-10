@@ -48,4 +48,8 @@ public class Laser extends Obstacle {
   void decreaseCountdown() {
     countdown--;
   }
+  
+  int getDangerTime(){
+    return DANGERTIME;
+  }
 }

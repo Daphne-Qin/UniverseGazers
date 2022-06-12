@@ -122,8 +122,10 @@ void keyPressed() {
 //================================================================================
 
 void startPage() {
+  background(5,84,70);
   stroke(0);
-  fill(255);
+  strokeWeight(20);
+  fill(175,250,230);
   rect(width/2-500, height/2-250, 1000, 500);
 
   // start screen text
@@ -132,8 +134,10 @@ void startPage() {
   textSize(75);
   text("UniverseGazers", width/2, 300);
   textSize(45);
-  text("Press space to start!", width/2, 400);
-  text("Press 'i' for instructions.", width/2, 480);
+  text("Press space to start!", width/2, 380);
+  text("Press 'i' for instructions.", width/2, 460);
+  textSize(30);
+  text("Press 'a' to turn off animations at any time during the game.", width/2, 540);
 }
 
 void instructions() {
@@ -147,7 +151,7 @@ void instructions() {
   text("- Run into coins to collect them!", 640, 500);
   text("(Press space to begin game)", 640, 600);
   textSize(15);
-  text("If the game is too laggy with animations, press \"a\". Press \"a\" again to turn it back on.", 640, 630);
+  text("If the game lags with animations, press \"a\". Press \"a\" again to turn it back on.", 640, 630);
 }
 
 void game() {

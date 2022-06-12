@@ -29,6 +29,7 @@ final int floor = 670;
 float scrollLeft; // speed at which game elements moves left
 private int countdown; // timer for game restart
 boolean animations;
+String deathMethod;
 
 // assets
 PImage bg; // background
@@ -91,7 +92,7 @@ void keyPressed() {
   if (key == 'a') {
     animations = (!animations) ? true : false;
   }
-  
+
   // go to instructions
   if (key == 'i') {
     if (mode == STARTPAGE) {
@@ -100,7 +101,7 @@ void keyPressed() {
       mode = STARTPAGE;
     }
   }
-  
+
   // start the game
   if (key == ' ' && mode != GAME && countdown == 0) {
     p = new Player(200, floor - playerImage.height/2, playerImage.height/2); // width and height are the same value here
@@ -153,7 +154,7 @@ void instructions() {
 void game() {
   // display floor, ceiling, currentScore, coins
   image(bg, 0, 0);
-  fill(5,84,70);
+  fill(5, 84, 70);
   rect(0, 0, width, ceiling); // ceiling
   rect(0, floor, width, ceiling); // floor
   fill(0);
@@ -186,9 +187,9 @@ void game() {
 }
 
 void end() {
+  mode = END;
   coins += currentCoins;
   finalScore = currentScore + currentCoins * 2;
-  mode = END;
   countdown = 50;
 }
 
@@ -201,9 +202,13 @@ void endPage() {
   textAlign(CENTER);
   fill(0);
   textSize(50);
-  text("You lost! Try again?", width/2, 230);
+  if (!deathMethod.equals("Obstacle")) {
+    text("You hit a" + deathMethod + "! Try again?", width/2, 230);
+  } else {
+    text("You hit an " + deathMethod + "! Try again?", width/2, 230);
+  }
   textSize(30);
-  text("Raw Score: " + currentScore, width/2, 310);
+  text("Raw Score: " + (currentScore-1), width/2, 310); // it increments by 1 while end() is running so this is to counteract that
   text("Final Score: " + finalScore, width/2, 360);
   fill(255, 0, 0);
   if (calcHighScore(finalScore)) text("New High Score!", width/2, 410);
@@ -273,7 +278,7 @@ void initializeImages() {
   r = 60;
   playerImage = loadImage("./assets/Player.png");
   playerImage.resize(r, r);
-  
+
   // Spacemen
   w = 50;
   h = 50;

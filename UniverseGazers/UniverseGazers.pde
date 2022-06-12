@@ -157,6 +157,7 @@ void instructions() {
 
 void game() {
   // display floor, ceiling, currentScore, coins
+  strokeWeight(1);
   image(bg, 0, 0);
   fill(5, 84, 70);
   rect(0, 0, width, ceiling); // ceiling
@@ -200,6 +201,7 @@ void end() {
 void endPage() {
   stroke(0);
   fill(255);
+  strokeWeight(1);
   rect(width/2-500, height/2-250, 1000, 500);
 
   // end screen text

@@ -113,7 +113,10 @@ void keyPressed() {
   }
 
   // end the game
-  if (key == 'e' && mode == GAME) end();
+  if (key == 'e' && mode == GAME) {
+    deathMethod = "end key";
+    end();
+  }
 }
 
 
@@ -123,10 +126,10 @@ void keyPressed() {
 //================================================================================
 
 void startPage() {
-  background(5,84,70);
+  background(5, 84, 70);
   stroke(0);
   strokeWeight(20);
-  fill(175,250,230);
+  fill(175, 250, 230);
   rect(width/2-500, height/2-250, 1000, 500);
 
   // start screen text
@@ -196,6 +199,7 @@ void end() {
   coins += currentCoins;
   finalScore = currentScore + currentCoins * 2;
   countdown = 50;
+  if (!deathMethod.equals("end key")) currentScore--; // it increments by 1 while end() is running so this is to counteract that
 }
 
 void endPage() {  
@@ -209,13 +213,16 @@ void endPage() {
   textAlign(CENTER);
   fill(0);
   textSize(50);
-  if (!deathMethod.equals("Obstacle")) {
-    text("You hit a " + deathMethod + "! Try again?", width/2, 230);
-  } else {
+  
+  if (deathMethod.equals("Obstacle")) {
     text("You hit an " + deathMethod + "! Try again?", width/2, 230);
+  } else if (deathMethod.equals("end key")) {
+    text("You hit the " + deathMethod + "! Try again?", width/2, 230);
+  } else {
+    text("You hit a " + deathMethod + "! Try again?", width/2, 230);
   }
   textSize(30);
-  text("Raw Score: " + (currentScore-1), width/2, 310); // it increments by 1 while end() is running so this is to counteract that
+  text("Raw Score: " + currentScore, width/2, 310);
   text("Final Score: " + finalScore, width/2, 360);
   fill(255, 0, 0);
   if (calcHighScore(finalScore)) text("New High Score!", width/2, 410);
@@ -389,6 +396,14 @@ void moveElements() {
         currentCoins++;
       }
     }
+    // get rid of Spacemen if a Bullet hits them
+    for (int j = spacemenList.size()-1; j == 0; j--) {
+      Spacemen s = spacemenList.get(j);
+      if (s.isTouchingBullet(b)) {
+        bulletList.remove(b);
+        spacemenList.remove(s);
+      }
+    }
     // get rid of it if it's below the floor
     if (b.getY() + b.getYSpeed() >= floor) bulletList.remove(b);
   }
@@ -399,7 +414,9 @@ void moveElements() {
 
 void spawnBullets() {
   if (countdown != 0) return;
-  Bullet b = new Bullet(p.getX(), p.getY()+25);
+  int wid = 7;
+  int ht = 15;
+  Bullet b = new Bullet(p.getX(), p.getY()+p.getRadius(), wid, ht);
   bulletList.add(b);
   countdown = 7;
 }

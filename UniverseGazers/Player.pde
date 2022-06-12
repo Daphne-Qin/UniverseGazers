@@ -61,7 +61,12 @@ public class Player {
     // check dimensions
     boolean horizontal = (x + radius >= o.getX() && x - radius <= o.getX()+o.getWidth());
     boolean vertical = (y + radius >= o.getY() && y - radius <= o.getY()+o.getHeight());
-    return (horizontal && vertical);
+    if (horizontal && vertical) {
+      deathMethod = obstacleType;
+      return true;
+    } else {
+      return false;
+    }
   }
 
   float getX() {

@@ -113,7 +113,10 @@ void keyPressed() {
   }
 
   // end the game
-  if (key == 'e' && mode == GAME) end();
+  if (key == 'e' && mode == GAME) {
+    deathMethod = "end key";
+    end();
+  }
 }
 
 
@@ -196,6 +199,7 @@ void end() {
   coins += currentCoins;
   finalScore = currentScore + currentCoins * 2;
   countdown = 50;
+  if (!deathMethod.equals("end key")) currentScore--; // it increments by 1 while end() is running so this is to counteract that
 }
 
 void endPage() {
@@ -208,13 +212,15 @@ void endPage() {
   textAlign(CENTER);
   fill(0);
   textSize(50);
-  if (!deathMethod.equals("Obstacle")) {
-    text("You hit a " + deathMethod + "! Try again?", width/2, 230);
+  if (deathMethod.equals("Obstacle")) {
+    text("You hit an Obstacle! Try again?", width/2, 230);
+  } else if (deathMethod.equals("end key")) {
+    text("You hit the end key! Try again?", width/2, 230);
   } else {
-    text("You hit an " + deathMethod + "! Try again?", width/2, 230);
+    text("You hit a " + deathMethod + "! Try again?", width/2, 230);
   }
   textSize(30);
-  text("Raw Score: " + (currentScore-1), width/2, 310); // it increments by 1 while end() is running so this is to counteract that
+  text("Raw Score: " + currentScore, width/2, 310);
   text("Final Score: " + finalScore, width/2, 360);
   fill(255, 0, 0);
   if (calcHighScore(finalScore)) text("New High Score!", width/2, 410);

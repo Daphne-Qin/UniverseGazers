@@ -209,7 +209,7 @@ void endPage() {
   fill(0);
   textSize(50);
   if (!deathMethod.equals("Obstacle")) {
-    text("You hit a" + deathMethod + "! Try again?", width/2, 230);
+    text("You hit a " + deathMethod + "! Try again?", width/2, 230);
   } else {
     text("You hit an " + deathMethod + "! Try again?", width/2, 230);
   }

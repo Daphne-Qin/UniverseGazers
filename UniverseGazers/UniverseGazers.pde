@@ -6,7 +6,7 @@
 Player p;
 
 // stat variables
-int highScore, currentScore, coins, currentCoins;
+int highScore, finalScore, currentScore, coins, currentCoins;
 
 // game element ArrayLists
 ArrayList<Bullet> bulletList;
@@ -31,7 +31,7 @@ private int countdown; // timer for game restart
 
 // assets
 PImage bg; // background
-PImage coinImage; // obstacle
+PImage[] coinImage; // coins
 PImage obstacleImageHorizontal, obstacleImageVertical; // obstacle
 PImage missileImage; // missile
 PImage playerImage; // player
@@ -98,6 +98,7 @@ void keyPressed() {
     p = new Player(200, floor - playerImage.height/2, playerImage.height/2); // width and height are the same value here
     makeLists();
     currentScore = 0;
+    currentCoins = 0;
     scrollLeft = -5;
     mode = GAME;
   }
@@ -174,6 +175,8 @@ void game() {
 }
 
 void end() {
+  coins += currentCoins;
+  finalScore = currentScore + currentCoins * 2;
   mode = END;
   countdown = 50;
 }
@@ -181,11 +184,7 @@ void end() {
 void endPage() {
   stroke(0);
   fill(255);
-  rect(width/2-500, height/2-250, 1000, 500);       
-
-  coins += currentCoins;
-  int calc = currentScore + currentCoins * 2;
-  currentCoins = 0; // to avoid calculating high score and total coins more than once ***FIX LATER***
+  rect(width/2-500, height/2-250, 1000, 500);
 
   // end screen text
   textAlign(CENTER);
@@ -194,9 +193,9 @@ void endPage() {
   text("You lost! Try again?", width/2, 230);
   textSize(30);
   text("Raw Score: " + currentScore, width/2, 310);
-  text("Final Score: " + calc, width/2, 360);
+  text("Final Score: " + finalScore, width/2, 360);
   fill(255, 0, 0);
-  if (calcHighScore(calc)) text("New High Score!", width/2, 410);
+  if (calcHighScore(finalScore)) text("New High Score!", width/2, 410);
   fill(0);
   text("Press space to replay.", width/2, 490);
   textSize(15);
@@ -232,30 +231,43 @@ void setScrollLeft(float val) {
 }
 
 void initializeImages() {
+  int w, h, r; // width, height, radus - makes it slightly more convenient/clear to type in variables
+
   // background
   bg = loadImage("./assets/UniverseBackground.png");
-  
+
   // Coins
-  coinImage = loadImage("./assets/Coin.png");
-  coinImage.resize(30, 30); 
-  
+  r = 30;
+  coinImage = new PImage[8];
+  for (int i = 0; i < coinImage.length; i++) {
+    coinImage[i] = loadImage("./assets/Coin" + i + ".png");
+    coinImage[i].resize(r, r);
+  }
+
   // Obstacles
+  w = 170;
+  h = 65;
   obstacleImageHorizontal = loadImage("./assets/ObstacleHorizontal.png");
-  obstacleImageHorizontal.resize(170, 65);
+  obstacleImageHorizontal.resize(w, h);
   obstacleImageVertical = loadImage("./assets/ObstacleVertical.png");
-  obstacleImageVertical.resize(65, 170);
-  
+  obstacleImageVertical.resize(h, w);
+
   // Missiles
+  w = 100;
+  h = 50;
   missileImage = loadImage("./assets/Missile.png");
-  missileImage.resize(100, 50); // need to resize
-  
+  missileImage.resize(w, h); // need to resize
+
   // Player
+  r = 50;
   playerImage = loadImage("./assets/Player.png");
-  playerImage.resize(50, 50);
-  
+  playerImage.resize(r, r);
+
   // Spacemen
+  w = 50;
+  h = 50;
   spacemenImage = loadImage("./assets/Spacemen.png");
-  spacemenImage.resize(50,50);
+  spacemenImage.resize(w, h);
 }
 
 
@@ -294,7 +306,7 @@ void moveElements() {
     // get rid of it if it's to the left of the screen
     if (c.getX() == -1000) coinList.remove(c);
   }
-  
+
   // Obstacles
   for (int i = 0; i < obstacleList.size(); i++) {
     Obstacle o = obstacleList.get(i);
@@ -305,7 +317,7 @@ void moveElements() {
     // get rid of it if it's to the left of the screen
     if (o.getX() == -1000) obstacleList.remove(o);
   }
-  
+
   // Missles
   for (int i = 0; i < missileList.size(); i++) {
     Missile m = missileList.get(i);
@@ -339,9 +351,9 @@ void moveElements() {
     // get rid of it if it's to the left of the screen
     if (s.getX() == -1000) spacemenList.remove(s);
   }
-  
+
   // Bullets
-  for (int i = 0; i < bulletList.size(); i ++){
+  for (int i = 0; i < bulletList.size(); i ++) {
     Bullet b = bulletList.get(i);
     b.move();
     b.display();
@@ -362,7 +374,7 @@ void moveElements() {
 
 // == spawning Objects within their respective ArrayLists ==
 
-void spawnBullets(){
+void spawnBullets() {
   if (countdown != 0) return;
   Bullet b = new Bullet(p.getX(), p.getY()+25);
   bulletList.add(b);
@@ -370,8 +382,8 @@ void spawnBullets(){
 }
 
 void spawnCoins() {
-  int coinDiameter = coinImage.height;
-  
+  int coinDiameter = coinImage[0].height;
+
   int[][] layout = CoinLayouts.getArrangement();
   float firstX = width + coinDiameter/2; // spawns directly off-screen
   float firstY = ( (float)(Math.random()*20) ) * 5 + ceiling + coinDiameter/2; // I forgot what exactly this algorithm was and it's imperfect, so I will redo it
@@ -393,7 +405,7 @@ void spawnCoins() {
       }
     }
   }
-  
+
   // add all the coins
   for (int i = 0; i < layout.length; i++) { // determines y
     for (int j = 0; j < layout[i].length; j++) { // determines x
@@ -451,13 +463,13 @@ void spawnObstacles() {
 
 void spawnSpacemen() {
   Spacemen man = new Spacemen(width + spacemenImage.width, spacemenImage.width, spacemenImage.height);
-  
+
   // check if Spacemen would overlap with other Spacemen within a 50 px distance
   for (Spacemen s : spacemenList) {
     float d = Math.abs(man.getX()+man.getWidth()/2 - s.getX()+s.getWidth()/2);
     if (d <= 50) return;
   }
-  
+
   // add man
   spacemenList.add(man);
 }

@@ -1,16 +1,19 @@
 public class Bullet {
   private float x, y, dx, dy;
+  private int wid, ht;
 
-  public Bullet(float x, float y) {
+  public Bullet(float x, float y, int wid, int ht) {
     this.x = x;
     this.y = y;
     dx = (int)(Math.random()*5) * (-1) + 3; // should shoot out in 3 directions but from the same x and y coordinates
     dy = (float)(Math.random()*10)+25;
+    this.wid = wid;
+    this.ht = ht;
   }
 
   void display() {
     fill(230, 219, 190);
-    ellipse(x, y, 7.5, 15);
+    ellipse(x, y, wid, ht);
   }
 
   void move() {
@@ -20,7 +23,7 @@ public class Bullet {
   }
 
   boolean isTouchingCoin(Coin c) {
-    return (dist(x, y, c.getX(), c.getY()) <= 32.5);
+    return (dist(x + wid/2, y + ht/2, c.getX(), c.getY()) <= ht/2 + c.getRadius());
   }
 
   float getX() {
@@ -37,5 +40,13 @@ public class Bullet {
 
   float getYSpeed() {
     return dy;
+  }
+
+  int getWidth() {
+    return wid;
+  }
+
+  int getHeight() {
+    return ht;
   }
 }

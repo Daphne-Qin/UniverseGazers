@@ -4,13 +4,13 @@ public class Spacemen {
 
   public Spacemen(float x, int wid, int ht) {
     this.x = x;
-    this.y = floor - ht;
+    this.y = floor;
     this.wid = wid;
     this.ht = ht;
   }
 
   void display() {
-    image(spacemenImage, x-wid, y);
+    image(spacemenImage, x-wid, y-ht);
   }
 
   void move() {
@@ -18,7 +18,9 @@ public class Spacemen {
   }
 
   boolean isTouchingBullet(Bullet b) {
-    return(b.getX() == x && b.getY() == y);
+    boolean horizontal = (x <= b.getX() && x + wid >= b.getX());
+    boolean vertical = (y <= b.getY() + b.getHeight()/2);
+    return (horizontal && vertical);
   }
 
   float getX() {

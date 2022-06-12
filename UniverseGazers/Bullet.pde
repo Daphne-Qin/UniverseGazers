@@ -12,6 +12,8 @@ public class Bullet {
   }
 
   void display() {
+    stroke(0);
+    strokeWeight(1);
     fill(230, 219, 190);
     ellipse(x, y, wid, ht);
   }

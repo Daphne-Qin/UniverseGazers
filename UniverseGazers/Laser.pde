@@ -15,7 +15,9 @@ public class Laser extends Obstacle {
 
   void display() {
     // laser pointers
-    fill(150, 150, 150);
+    fill(150);
+    stroke(40);
+    strokeWeight(5);
     rect(getX(), getY(), 75, getHeight());
     rect(width-getX()-75, getY(), 75, getHeight());
     fill(245, 113, 5);
@@ -24,8 +26,10 @@ public class Laser extends Obstacle {
 
     // laser beam
     if (countdown < DANGERTIME) { // actual laser beam
+      stroke(255);
+      strokeWeight(3);
       fill(255, 46, 119);
-      rect(getX()+100, getY(), width-getX()-250, getHeight());
+      rect(getX()+100, getY()+15, width-getX()-250, getHeight()-30);
     } else if (countdown < WARNINGTIME && countdown >= DANGERTIME) { // warning
       noStroke();
       fill(255, 46, 119, 100);

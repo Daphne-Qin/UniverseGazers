@@ -9,6 +9,12 @@ APCS Final Project
 
 [Prototype](https://docs.google.com/document/d/189F9OhO6VNhNR0iS9Ybe8OsrwMNg-A3QnAEKoP5iDC8/edit?usp=sharing) and [Original Gameplay](https://youtu.be/OhU7tLtOIgE)
 
+## Running and Compiling Instructions
+#### Compiling
+No need to compile anything. Go to running instructions.
+#### Running
+Open the UniverseGazers file within the directory (post-cloning), then open the `UniverseGazers.pde` file and you should have 9 processing tabs. Press play.
+
 ## Development Log
 Note: To refer to `UniverseGazers.pde`, we use `Game` since that was the original name we had for the file in both our prototype document and the UML. Also, using "UniverseGazers" conflicts with the name of the entire game.
 

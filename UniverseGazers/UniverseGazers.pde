@@ -142,7 +142,7 @@ void startPage() {
 }
 
 void instructions() {
-  background(197, 231, 250);
+  background(175,250,230);
   textAlign(CENTER);
   textSize(30);
   text("The Four General Rules!", 640, 100);
@@ -198,10 +198,11 @@ void end() {
   countdown = 50;
 }
 
-void endPage() {
+void endPage() {  
+  background(5,84,70);
   stroke(0);
-  fill(255);
-  strokeWeight(1);
+  fill(175,250,230);
+  strokeWeight(20);
   rect(width/2-500, height/2-250, 1000, 500);
 
   // end screen text
@@ -209,7 +210,7 @@ void endPage() {
   fill(0);
   textSize(50);
   if (!deathMethod.equals("Obstacle")) {
-    text("You hit a" + deathMethod + "! Try again?", width/2, 230);
+    text("You hit a " + deathMethod + "! Try again?", width/2, 230);
   } else {
     text("You hit an " + deathMethod + "! Try again?", width/2, 230);
   }

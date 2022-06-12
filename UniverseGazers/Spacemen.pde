@@ -18,7 +18,7 @@ public class Spacemen {
   }
 
   boolean isTouchingBullet(Bullet b) {
-    boolean horizontal = (x <= b.getX() && x + wid >= b.getX());
+    boolean horizontal = (x <= b.getX() + b.getWidth()/2 && x + wid >= b.getX() - b.getWidth()/2);
     boolean vertical = (y <= b.getY() + b.getHeight()/2);
     return (horizontal && vertical);
   }

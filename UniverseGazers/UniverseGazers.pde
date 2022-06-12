@@ -143,12 +143,13 @@ void instructions() {
 void game() {
   // display floor, ceiling, currentScore, coins
   image(bg, 0, 0);
-  fill(255);
+  fill(5,84,70);
   rect(0, 0, width, ceiling); // ceiling
   rect(0, floor, width, ceiling); // floor
   fill(0);
   textSize(15);
   textAlign(LEFT);
+  fill(255);
   text("Current score: " + currentScore, 10, 20);
   text("Coins collected: " + currentCoins, 10, 40);
 
@@ -171,7 +172,7 @@ void game() {
 
   // === increment score and speed ===
   currentScore++;
-  if (scrollLeft > -20) scrollLeft -= 0.005;
+  if (scrollLeft > -20) scrollLeft -= 0.001;
 }
 
 void end() {
@@ -259,10 +260,10 @@ void initializeImages() {
   missileImage.resize(w, h); // need to resize
 
   // Player
-  r = 50;
+  r = 60;
   playerImage = loadImage("./assets/Player.png");
   playerImage.resize(r, r);
-
+  
   // Spacemen
   w = 50;
   h = 50;

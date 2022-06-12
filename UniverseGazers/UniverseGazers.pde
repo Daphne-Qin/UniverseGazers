@@ -404,13 +404,16 @@ void spawnBullets() {
 }
 
 void spawnCoins() {
+  int distance = 200;
+  
+  
   int coinDiameter = coinImage[0].height;
 
   int[][] layout = CoinLayouts.getArrangement();
   float firstX = width + coinDiameter/2; // spawns directly off-screen
   float firstY = ( (float)(Math.random()*20) ) * 5 + ceiling + coinDiameter/2; // I forgot what exactly this algorithm was and it's imperfect, so I will redo it
 
-  // check for Coin or Obstacle overlaps within 200 px
+  // check for Coin or Obstacle overlaps within "distance" px
   for (int i = 0; i < layout.length; i++) { // determines y
     for (int j = 0; j < layout[i].length; j++) { // determines x
       float x = firstX + j * coinDiameter;
@@ -418,12 +421,12 @@ void spawnCoins() {
 
       for (Coin c : coinList) { // check for overlap with Coins
         float d = dist(x, y, c.getX(), c.getY());
-        if (d <= 200) return;
+        if (d <= distance) return;
       }
 
       for (Obstacle o : obstacleList) { // check for overlap with Obstacles
         float d = dist(x, y, o.getX()+o.getWidth()/2, o.getY()+o.getHeight()/2);
-        if (d <= 200) return;
+        if (d <= distance) return;
       }
     }
   }
@@ -457,6 +460,9 @@ void spawnMissiles() {
 }
 
 void spawnObstacles() {
+  int distance = 200; // determines distance between Objects
+  
+  
   // set the two Obstacle orientations
   float y1 = (float)(Math.random()*(floor-ceiling-obstacleImageHorizontal.height)) + ceiling; // horizontal
   float y2 = (float)(Math.random()*(floor-ceiling-obstacleImageVertical.height)) + ceiling; // vertical
@@ -466,17 +472,17 @@ void spawnObstacles() {
   // determine Obstacle type
   Obstacle o = (Math.random() < 0.5) ? o1 : o2;
 
-  // check if the Obstacle would overlap with another Coin within a 200 px distance
+  // check if the Obstacle would overlap with another Coin within a "distance" px distance
   for (Coin c : coinList) {
     float d = dist(o.getX()+o.getWidth()/2, o.getY()+o.getHeight()/2, c.getX(), c.getY());
-    if (d <= 200) return;
+    if (d <= distance) return;
   }
 
 
-  // check if either would overlap with another Obstacle within a 200 px distance
+  // check if either would overlap with another Obstacle within a "distance" px distance
   for (Obstacle obs : obstacleList) {
     float d = dist(o.getX()+o.getWidth()/2, o.getY()+o.getHeight()/2, obs.getX()+obs.getWidth()/2, obs.getY()+obs.getHeight()/2);
-    if (d <= 200) return;
+    if (d <= distance) return;
   }
 
   // add the Obstacle

@@ -39,11 +39,18 @@ PImage missileImage; // missile
 PImage playerImage; // player
 PImage spacemenImage; // spacemen
 
+//font
+PFont font;
+
 //================================================================================
 // SKELETON - SETUP, DRAW
 //================================================================================
 
 void setup() {
+  
+  font = loadFont("LaoMN-48.vlw");
+  textFont(font); 
+  
   size(1280, 720);
   background(225);
   highScore = 0;
@@ -126,6 +133,7 @@ void keyPressed() {
 //================================================================================
 
 void startPage() {
+
   background(5, 84, 70);
   stroke(0);
   strokeWeight(20);
@@ -181,7 +189,7 @@ void game() {
   // spawn Coins
   if (Math.random() < 0.003) spawnCoins();
   // spawn Lasers
-  if (Math.random() < 0.001) spawnLasers();
+  if (Math.random() < 0.002) spawnLasers();
   // spawn Missiles
   if (Math.random() < 0.002) spawnMissiles();
   // spawn Obstacles

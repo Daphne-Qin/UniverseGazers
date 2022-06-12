@@ -1,11 +1,11 @@
 public static class CoinLayouts {
-  static final int[][] regular = new int[][]{
+  private static final int[][] regular = new int[][]{
     {0, 1, 1, 1, 1, 1, 1, 0}, 
     {1, 1, 1, 1, 1, 1, 1, 1}, 
     {0, 1, 1, 1, 1, 1, 1, 0}
   };
 
-  static final int[][] checkerboard1 = new int[][] {
+  private static final int[][] checkerboard1 = new int[][] {
     {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, 
     {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1}, 
     {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, 
@@ -14,7 +14,7 @@ public static class CoinLayouts {
     {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1}
   };
 
-  static final int[][] checkerboard2 = new int[][] {
+  private static final int[][] checkerboard2 = new int[][] {
     {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1}, 
     {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, 
     {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1}, 
@@ -23,7 +23,7 @@ public static class CoinLayouts {
     {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0}
   };
 
-  static final int[][] heart = new int[][]{
+  private static final int[][] heart = new int[][]{
     {0, 1, 1, 0, 1, 1, 0}, 
     {1, 1, 1, 1, 1, 1, 1}, 
     {1, 1, 1, 1, 1, 1, 1}, 
@@ -32,7 +32,7 @@ public static class CoinLayouts {
     {0, 0, 0, 1, 0, 0, 0}
   };
 
-  static final int[][] coins = new int[][]{
+  private static final int[][] coins = new int[][]{
     {0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1}, 
     {1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1}, 
     {1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1}, 
@@ -40,7 +40,7 @@ public static class CoinLayouts {
     {0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1}
   };
 
-  static final int[][] bigArrow = new int[][]{
+  private static final int[][] bigArrow = new int[][]{
     {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0}, 
     {0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0}, 
     {0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0}, 
@@ -52,7 +52,7 @@ public static class CoinLayouts {
     {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0}
   };
 
-  static int[][] getArrangement() {
+  public static int[][] getArrangement() {
     int chance = (int)(Math.random()*10)+1;
     switch (chance) {
     case 1: 

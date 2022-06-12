@@ -479,7 +479,7 @@ void spawnMissiles() {
 }
 
 void spawnObstacles() {
-  int distance = 200; // determines distance between Objects
+  int distance = 400; // determines distance between Objects
   
   
   // set the two Obstacle orientations

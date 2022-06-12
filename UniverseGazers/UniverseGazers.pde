@@ -170,10 +170,11 @@ void game() {
 
   // === increment score and speed ===
   currentScore++;
-  if (scrollLeft > -20) scrollLeft -= 0.005;
+  if (scrollLeft > -20) scrollLeft -= 0.001;
 }
 
 void end() {
+  //delay(1000);
   mode = END;
   countdown = 50;
 }

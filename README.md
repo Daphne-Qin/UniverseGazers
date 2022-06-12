@@ -10,9 +10,9 @@ APCS Final Project
 [Prototype](https://docs.google.com/document/d/189F9OhO6VNhNR0iS9Ybe8OsrwMNg-A3QnAEKoP5iDC8/edit?usp=sharing) and [Original Gameplay](https://youtu.be/OhU7tLtOIgE)
 
 ## Running and Compiling Instructions
-### Compiling
+####Compiling
 No need to compile anything. Go to running instructions.
-### Running
+#### Running
 Open the UniverseGazers file within the directory (post-cloning), then open the `UniverseGazers.pde` file and you should have 9 processing tabs. Press play.
 
 ## Development Log

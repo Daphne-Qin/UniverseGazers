@@ -28,6 +28,7 @@ final int ceiling = 50;
 final int floor = 670;
 float scrollLeft; // speed at which game elements moves left
 private int countdown; // timer for game restart
+boolean animations;
 
 // assets
 PImage bg; // background
@@ -48,6 +49,7 @@ void setup() {
   coins = 0;
   scrollLeft = -5;
   initializeImages();
+  animations = true;
 
   mode = STARTPAGE;
 }
@@ -85,6 +87,11 @@ void draw() {
 //================================================================================
 
 void keyPressed() {
+  // toggle animations
+  if (key == 'a') {
+    animations = (!animations) ? true : false;
+  }
+  
   // go to instructions
   if (key == 'i') {
     if (mode == STARTPAGE) {
@@ -93,6 +100,7 @@ void keyPressed() {
       mode = STARTPAGE;
     }
   }
+  
   // start the game
   if (key == ' ' && mode != GAME && countdown == 0) {
     p = new Player(200, floor - playerImage.height/2, playerImage.height/2); // width and height are the same value here
@@ -138,6 +146,8 @@ void instructions() {
   text("- Avoid obstacles! One hit to an obstacle will kill you.", 640, 400);
   text("- Run into coins to collect them!", 640, 500);
   text("(Press space to begin game)", 640, 600);
+  textSize(15);
+  text("If the game is too laggy with animations, press \"a\". Press \"a\" again to turn it back on.", 640, 630);
 }
 
 void game() {

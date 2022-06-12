@@ -11,9 +11,11 @@ public class Coin {
   }
 
   void display() {
-    if (currentScore % 7 == 0) {
-      imageNum++;
-      if (imageNum == coinImage.length) imageNum = 0;
+    if (animations) {
+      if (currentScore % 7 == 0) {
+        imageNum++;
+        if (imageNum == coinImage.length) imageNum = 0;
+      }
     }
     image(coinImage[imageNum], x-radius, y-radius);
   }
@@ -29,7 +31,7 @@ public class Coin {
   float getY() {
     return y;
   }
-  
+
   int getRadius() {
     return radius;
   }

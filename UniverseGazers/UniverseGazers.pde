@@ -161,6 +161,7 @@ void instructions() {
 void game() {
   // display floor, ceiling, currentScore, coins
   strokeWeight(1);
+  stroke(0);
   image(bg, 0, 0);
   fill(5, 84, 70);
   rect(0, 0, width, ceiling); // ceiling

@@ -182,7 +182,7 @@ void game() {
 
   // === increment score and speed ===
   currentScore++;
-  if (scrollLeft > -20) scrollLeft -= 0.001;
+  if (scrollLeft > -20) scrollLeft -= 0.0025;
 }
 
 void end() {

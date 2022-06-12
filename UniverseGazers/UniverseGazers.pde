@@ -430,7 +430,7 @@ void spawnCoins() {
 
   int[][] layout = CoinLayouts.getArrangement();
   float firstX = width + coinDiameter/2; // spawns directly off-screen
-  float firstY = ( (float)(Math.random()*20) ) * 5 + ceiling + coinDiameter/2; // I forgot what exactly this algorithm was and it's imperfect, so I will redo it
+  float firstY = (float)(Math.random()*(floor-ceiling-(layout.length*coinDiameter)))+ceiling+coinDiameter/2;
 
   // check for Coin or Obstacle overlaps within "distance" px
   for (int i = 0; i < layout.length; i++) { // determines y
@@ -479,7 +479,7 @@ void spawnMissiles() {
 }
 
 void spawnObstacles() {
-  int distance = 200; // determines distance between Objects
+  int distance = 400; // determines distance between Objects
   
   
   // set the two Obstacle orientations

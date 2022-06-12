@@ -142,12 +142,13 @@ void instructions() {
 void game() {
   // display floor, ceiling, currentScore, coins
   image(bg, 0, 0);
-  fill(255);
+  fill(5,84,70);
   rect(0, 0, width, ceiling); // ceiling
   rect(0, floor, width, ceiling); // floor
   fill(0);
   textSize(15);
   textAlign(LEFT);
+  fill(255);
   text("Current score: " + currentScore, 10, 20);
   text("Coins collected: " + currentCoins, 10, 40);
 
@@ -252,7 +253,7 @@ void initializeImages() {
   
   // Player
   playerImage = loadImage("./assets/Player.png");
-  playerImage.resize(50, 50);
+  playerImage.resize(60,60);
   
   // Spacemen
   spacemenImage = loadImage("./assets/Spacemen.png");

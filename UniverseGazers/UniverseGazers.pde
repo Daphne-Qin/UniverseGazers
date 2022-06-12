@@ -6,7 +6,7 @@
 Player p;
 
 // stat variables
-int highScore, currentScore, coins, currentCoins;
+int highScore, finalScore, currentScore, coins, currentCoins;
 
 // game element ArrayLists
 ArrayList<Bullet> bulletList;
@@ -98,6 +98,7 @@ void keyPressed() {
     p = new Player(200, floor - playerImage.height/2, playerImage.height/2); // width and height are the same value here
     makeLists();
     currentScore = 0;
+    currentCoins = 0;
     scrollLeft = -5;
     mode = GAME;
   }
@@ -174,6 +175,8 @@ void game() {
 }
 
 void end() {
+  coins += currentCoins;
+  finalScore = currentScore + currentCoins * 2;
   mode = END;
   countdown = 50;
 }
@@ -181,11 +184,7 @@ void end() {
 void endPage() {
   stroke(0);
   fill(255);
-  rect(width/2-500, height/2-250, 1000, 500);       
-
-  coins += currentCoins;
-  int calc = currentScore + currentCoins * 2;
-  currentCoins = 0; // to avoid calculating high score and total coins more than once ***FIX LATER***
+  rect(width/2-500, height/2-250, 1000, 500);
 
   // end screen text
   textAlign(CENTER);
@@ -194,9 +193,9 @@ void endPage() {
   text("You lost! Try again?", width/2, 230);
   textSize(30);
   text("Raw Score: " + currentScore, width/2, 310);
-  text("Final Score: " + calc, width/2, 360);
+  text("Final Score: " + finalScore, width/2, 360);
   fill(255, 0, 0);
-  if (calcHighScore(calc)) text("New High Score!", width/2, 410);
+  if (calcHighScore(finalScore)) text("New High Score!", width/2, 410);
   fill(0);
   text("Press space to replay.", width/2, 490);
   textSize(15);
@@ -233,7 +232,7 @@ void setScrollLeft(float val) {
 
 void initializeImages() {
   int w, h, r; // width, height, radus - makes it slightly more convenient/clear to type in variables
-  
+
   // background
   bg = loadImage("./assets/UniverseBackground.png");
 

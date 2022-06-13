@@ -6,15 +6,15 @@ APCS Final Project
 - **Group member names**: Judy Chen, Daphne Qin
 - **Brief Project description**: We would like to replicate Jetpack Joyride in processing, except we’ll name it UniverseGazers, as it’ll be space themed instead of mechanics themed. It  will implement similar iconic features to the actual Jetpack Joyride mobile game, such as allowing the player to collect coins along the way and requiring the player to avoid obstacles. As the game progresses, the player will face more challenges that make it harder to avoid the obstacles, such as laser beams that force the player to stay within a certain area of the screen, or missiles that fly across the screen. Once the player dies, their total score will be supplemented by the value that results from doubling the number of coins they collected. There will also be other optional features that are detailed in the optional features section of our prototype.
 
-[NEW Prototype](https://docs.google.com/document/d/1DknRAS9jda4gOVyg9hIqqR83yfPU9ud-cAbR4dCHGTc/edit?usp=sharing)
-[ORIGINAL Prototype](https://docs.google.com/document/d/189F9OhO6VNhNR0iS9Ybe8OsrwMNg-A3QnAEKoP5iDC8/edit?usp=sharing)
+[NEW Prototype](https://docs.google.com/document/d/1DknRAS9jda4gOVyg9hIqqR83yfPU9ud-cAbR4dCHGTc/edit?usp=sharing), 
+[ORIGINAL Prototype](https://docs.google.com/document/d/189F9OhO6VNhNR0iS9Ybe8OsrwMNg-A3QnAEKoP5iDC8/edit?usp=sharing), and
 [Original Gameplay](https://youtu.be/OhU7tLtOIgE)
 
 ## Running and Compiling Instructions
 #### Compiling
 No need to compile anything. Go to running instructions.
 #### Running
-Open the UniverseGazers file within the directory (post-cloning), then open the `UniverseGazers.pde` file and you should have 9 processing tabs. Press play.
+Open the UniverseGazers file within the directory (post-cloning), then open the `UniverseGazers.pde` file and you should have 9 processing tabs. Press play. There are no cheat codes, and we recommend pressing 'i' at the start page first to read some instructions we added (specifically keyCodes). Additionally, running the sketch multiple times would help guarantee that you see all of our features since they are randomized.
 
 ## Development Log
 Note: To refer to `UniverseGazers.pde`, we use `Game` since that was the original name we had for the file in both our prototype document and the UML. Also, using "UniverseGazers" conflicts with the name of the entire game.
@@ -23,7 +23,11 @@ Note: To refer to `UniverseGazers.pde`, we use `Game` since that was the origina
 **We** had a good night's sleep since we wanted to be rested. Then we turned in our final prototype.
 
 ### June 10-12, 2022 (Friday and the Weekend)
+**Judy** focused on beautifying the features of our game. For instance, she changed the color scheme and font, as well as the text alignment on the start page, end page, and to match the overall theme of the game (space, universe, etc.). She also changed the appearance of `Laser` objects by using processing tools such as `strokeWeight()`. She altered the `DANGERTIME` implementation for `Laser`s as well. There were also some constants that she altered such as the `scrollLeft` decrement value and frequency of `Laser` spawning. Furthermore, she wrote the compiling and running instructions for the `README.md` file, and also made a ton of edits to the prototype document using green to signify additions and strikethroughs to signify removals. 
+
 **Daphne** imported the various `Spacemen` (blue), `Coin`, and `Player` assets. In the `Game` class, she then initialized and scaled them in `initializeImages()`, and she changed `moveElements()` to `controlElements()` to better reflect the content of that method. She also edited the various classes (all except `Laser`) to use variables instead of hard-coded variables. She then added an `animations` variable to toggle `Coin` and `Spacemen` animations since they could potentially cause lagging. She finally fixed the score calculation bug and added the cause of death to `endPage()`. She then beautified the code and made it concise, editing and getting rid of multiple variables and methods in the process (minor changes that do not change functionality).
+
+**We** finished! YAY! 
 
 ### June 8-9, 2022 (Combining 8 and 9 because we had no school on the 9th)
 **Judy** added more images to the `Assets` folder, specifically the images for `Player`, `Missile`, and `Spacemen` objects. She also resized the images such that it would be more visible and beautified, but we have yet to alter the `isTouching()` methods to more appropriately accomodate the new sizes. As for `Spacemen` objects, she doesn't like the way the images look right now, so she'll figure that out later. She also changed the frequency of two objects.

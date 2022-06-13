@@ -37,7 +37,7 @@ PImage[] coinImage; // coins
 PImage obstacleImageHorizontal, obstacleImageVertical; // obstacle
 PImage missileImage; // missile
 PImage playerImage; // player
-PImage spacemenImage; // spacemen
+PImage[] spacemenImage; // spacemen
 
 //================================================================================
 // SKELETON - SETUP, DRAW
@@ -295,10 +295,13 @@ void initializeImages() {
   playerImage.resize(r, r);
 
   // Spacemen
-  w = 50;
-  h = 50;
-  spacemenImage = loadImage("./assets/Spacemen.png");
-  spacemenImage.resize(w, h);
+  w = 39;
+  h = 46;
+  spacemenImage = new PImage[4];
+  for (int i = 0; i < spacemenImage.length; i++) {
+    spacemenImage[i] = loadImage("./assets/BSpacemen" + i + ".png");
+    spacemenImage[i].resize(w, h);
+  }
 }
 
 
@@ -509,7 +512,7 @@ void spawnObstacles() {
 }
 
 void spawnSpacemen() {
-  Spacemen man = new Spacemen(width + spacemenImage.width, spacemenImage.width, spacemenImage.height);
+  Spacemen man = new Spacemen(width + spacemenImage[0].width, spacemenImage[0].width, spacemenImage[0].height);
 
   // check if Spacemen would overlap with other Spacemen within a 50 px distance
   for (Spacemen s : spacemenList) {

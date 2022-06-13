@@ -1,16 +1,24 @@
 public class Spacemen {
   private float x, y;
   private int wid, ht;
+  private int imageNum;
 
   public Spacemen(float x, int wid, int ht) {
     this.x = x;
     this.y = floor;
     this.wid = wid;
     this.ht = ht;
+    imageNum = 0;
   }
 
   void display() {
-    image(spacemenImage, x-wid, y-ht);
+    if (animations) {
+      if (currentScore % 7 == 0) {
+        imageNum++;
+        if (imageNum == spacemenImage.length) imageNum = 0;
+      }
+    }
+    image(spacemenImage[imageNum], x-wid, y-ht);
   }
 
   void move() {

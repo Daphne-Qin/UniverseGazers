@@ -389,14 +389,6 @@ void controlElements() {
         currentCoins++;
       }
     }
-    // get rid of Spacemen if a Bullet hits them
-    for (int j = spacemenList.size()-1; j == 0; j--) {
-      Spacemen s = spacemenList.get(j);
-      if (s.isTouchingBullet(b)) {
-        bulletList.remove(b);
-        spacemenList.remove(s);
-      }
-    }
     // get rid of it if it's below the FLOOR
     if (b.getY() + b.getYSpeed() >= FLOOR) bulletList.remove(b);
   }

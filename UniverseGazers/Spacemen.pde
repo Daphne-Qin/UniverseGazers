@@ -26,12 +26,6 @@ public class Spacemen {
     x += dx + scrollLeft; // they need to move a bit to the right
   }
 
-  boolean isTouchingBullet(Bullet b) {
-    boolean horizontal = (x <= b.getX() + b.getWidth()/2 && x + wid >= b.getX() - b.getWidth()/2);
-    boolean vertical = (y <= b.getY() + b.getHeight()/2);
-    return (horizontal && vertical);
-  }
-
   float getX() {
     return x;
   }

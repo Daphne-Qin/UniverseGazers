@@ -175,7 +175,7 @@ void game() {
   text("Coins collected: " + currentCoins, 10, 40);
 
 
-  // === move all elements ===
+  // === control all elements ===
   controlElements();
 
   // === spawn elements ===

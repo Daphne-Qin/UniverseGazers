@@ -156,7 +156,8 @@ void instructions() {
   text("- Run into coins to collect them!", 640, 500);
   text("(Press space to begin game)", 640, 600);
   textSize(15);
-  text("If the game lags with animations, press \"a\". Press \"a\" again to turn it back on.", 640, 630);
+  text("If the game lags with animations, press \'a\'. Press \'a\' again to turn it back on.", 640, 630);
+  text("If you want to exit the game, you can also press \'e\'.", 640, 660);
 }
 
 void game() {

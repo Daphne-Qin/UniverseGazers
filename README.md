@@ -19,7 +19,11 @@ Open the UniverseGazers file within the directory (post-cloning), then open the 
 Note: To refer to `UniverseGazers.pde`, we use `Game` since that was the original name we had for the file in both our prototype document and the UML. Also, using "UniverseGazers" conflicts with the name of the entire game.
 
 ### June 13, 2022 (Due Date!)
+**We** had a good night's sleep since we wanted to be rested. Then we turned in our final prototype.
+
 ### June 10-12, 2022 (Friday and the Weekend)
+**Daphne** imported the various `Spacemen` (blue), `Coin`, and `Player` assets. In the `Game` class, she then initialized and scaled them in `initializeImages()`, and she changed `moveElements()` to `controlElements()` to better reflect the content of that method. She also edited the various classes (all except `Laser`) to use variables instead of hard-coded variables. She then added an `animations` variable to toggle `Coin` and `Spacemen` animations since they could potentially cause lagging. She finally fixed the score calculation bug and added the cause of death to `endPage()`. She then beautified the code and made it concise, editing and getting rid of multiple variables and methods in the process (minor changes that do not change functionality).
+
 ### June 8-9, 2022 (Combining 8 and 9 because we had no school on the 9th)
 **Judy** added more images to the `Assets` folder, specifically the images for `Player`, `Missile`, and `Spacemen` objects. She also resized the images such that it would be more visible and beautified, but we have yet to alter the `isTouching()` methods to more appropriately accomodate the new sizes. As for `Spacemen` objects, she doesn't like the way the images look right now, so she'll figure that out later. She also changed the frequency of two objects.
 

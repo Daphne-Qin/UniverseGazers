@@ -1,15 +1,14 @@
 public class Player {
   private float x, y, dy;
   private int radius;
-  private float ACCELERATION, GRAVITY;
+  private final float ACCELERATION = -0.50;
+  private final float GRAVITY = 0.35;
 
   public Player(float x, float y, int radius) {
     this.radius = radius;
     this.x = x;
     this.y = y;
     dy = 0;
-    ACCELERATION = -0.50;
-    GRAVITY = 0.35;
   }
 
   void display() {

@@ -1,11 +1,11 @@
 public static class CoinLayouts {
-  private static final int[][] regular = new int[][]{
+  private static final int[][] REGULAR = new int[][]{
     {0, 1, 1, 1, 1, 1, 1, 0}, 
     {1, 1, 1, 1, 1, 1, 1, 1}, 
     {0, 1, 1, 1, 1, 1, 1, 0}
   };
 
-  private static final int[][] checkerboard1 = new int[][] {
+  private static final int[][] CHECKERBOARD_1 = new int[][] {
     {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, 
     {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1}, 
     {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, 
@@ -14,7 +14,7 @@ public static class CoinLayouts {
     {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1}
   };
 
-  private static final int[][] checkerboard2 = new int[][] {
+  private static final int[][] CHECKERBOARD_2 = new int[][] {
     {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1}, 
     {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, 
     {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1}, 
@@ -23,7 +23,7 @@ public static class CoinLayouts {
     {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0}
   };
 
-  private static final int[][] heart = new int[][]{
+  private static final int[][] HEART = new int[][]{
     {0, 1, 1, 0, 1, 1, 0}, 
     {1, 1, 1, 1, 1, 1, 1}, 
     {1, 1, 1, 1, 1, 1, 1}, 
@@ -32,7 +32,7 @@ public static class CoinLayouts {
     {0, 0, 0, 1, 0, 0, 0}
   };
 
-  private static final int[][] coins = new int[][]{
+  private static final int[][] COINS = new int[][]{
     {0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1}, 
     {1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1}, 
     {1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1}, 
@@ -40,7 +40,7 @@ public static class CoinLayouts {
     {0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1}
   };
 
-  private static final int[][] bigArrow = new int[][]{
+  private static final int[][] BIG_ARROW = new int[][]{
     {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0}, 
     {0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0}, 
     {0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0}, 
@@ -56,17 +56,17 @@ public static class CoinLayouts {
     int chance = (int)(Math.random()*10)+1;
     switch (chance) {
     case 1: 
-      return checkerboard1;
+      return CHECKERBOARD_1;
     case 2: 
-      return checkerboard2;
+      return CHECKERBOARD_2;
     case 3: 
-      return heart;
+      return HEART;
     case 4: 
-      return coins;
+      return COINS;
     case 5:
-      return bigArrow;
+      return BIG_ARROW;
     default: 
-      return regular; // 5 to 9
+      return REGULAR; // 6 to 10
     }
   }
 }

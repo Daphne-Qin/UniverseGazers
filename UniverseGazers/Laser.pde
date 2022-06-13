@@ -41,7 +41,8 @@ public class Laser extends Obstacle {
 
   // move() does nothing here, lasers stay in place
   @Override
-  void move() {}
+    void move() {
+  }
 
   // getX(), getY(), getWidth(), getHeight() are inherited; dy = 0
 
@@ -52,8 +53,8 @@ public class Laser extends Obstacle {
   void decreaseCountdown() {
     countdown--;
   }
-  
-  int getDangerTime(){
+
+  int getDangerTime() {
     return DANGERTIME;
   }
 }

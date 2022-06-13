@@ -6,9 +6,8 @@ public class Missile extends Obstacle {
   void display() {
     image(missileImage, getX(), getY());
   }
-  
+
   void move() {
     x += scrollLeft - 10;
-    // need to add viable code for bobbing up and down
   }
 }

@@ -9,33 +9,33 @@ Player p;
 int highScore, finalScore, currentScore, coins, currentCoins;
 
 // game element ArrayLists
-ArrayList<Bullet> bulletList;
-ArrayList<Coin> coinList;
-ArrayList<Laser> laserList;
-ArrayList<Missile> missileList;
-ArrayList<Obstacle> obstacleList;
-ArrayList<Spacemen> spacemenList;
+private ArrayList<Bullet> bulletList;
+private ArrayList<Coin> coinList;
+private ArrayList<Laser> laserList;
+private ArrayList<Missile> missileList;
+private ArrayList<Obstacle> obstacleList;
+private ArrayList<Spacemen> spacemenList;
 
 // mode variables
 int mode;
-final int STARTPAGE = 0;
-final int INSTRUCTIONS = 1;
-final int GAME = 2;
-final int END = 3;
+private final int STARTPAGE = 0;
+private final int INSTRUCTIONS = 1;
+private final int GAME = 2;
+private final int END = 3;
 
 // game mechanic variables
-final int ceiling = 50;
-final int floor = 670;
+final int CEILING = 50;
+final int FLOOR = 670;
 float scrollLeft; // speed at which game elements moves left
 private int countdown; // timer for game restart
 boolean animations;
 String deathMethod;
 
 // assets
-PImage bg; // background
+private PImage bg; // background
 PImage[] coinImage; // coins
-PImage obstacleImageHorizontal, obstacleImageVertical; // obstacle
 PImage missileImage; // missile
+PImage obstacleImageHorizontal, obstacleImageVertical; // obstacle
 PImage playerImage; // player
 PImage[] spacemenImage; // spacemen
 
@@ -47,10 +47,9 @@ PFont font;
 //================================================================================
 
 void setup() {
-  
   font = loadFont("LaoMN-48.vlw");
-  textFont(font); 
-  
+  textFont(font);
+
   size(1280, 720);
   background(225);
   highScore = 0;
@@ -81,11 +80,6 @@ void draw() {
     endPage();
     break;
   }
-
-  // for testing only
-  textSize(10);
-  fill(0);
-  //text("Mode: " + mode, 10, 10);
 }
 
 
@@ -111,7 +105,7 @@ void keyPressed() {
 
   // start the game
   if (key == ' ' && mode != GAME && countdown == 0) {
-    p = new Player(200, floor - playerImage.height/2, playerImage.height/2); // width and height are the same value here
+    p = new Player(200, FLOOR - playerImage.height/2, playerImage.height/2); // width and height are the same value here
     makeLists();
     currentScore = 0;
     currentCoins = 0;
@@ -133,7 +127,6 @@ void keyPressed() {
 //================================================================================
 
 void startPage() {
-
   background(5, 84, 70);
   stroke(0);
   strokeWeight(20);
@@ -144,16 +137,16 @@ void startPage() {
   textAlign(CENTER);
   fill(0);
   textSize(75);
-  text("UniverseGazers", width/2, 300);
+  text("UniverseGazers", width/2, 275);
   textSize(45);
-  text("Press space to start!", width/2, 380);
-  text("Press 'i' for instructions.", width/2, 460);
+  text("Press space to start!", width/2, 355);
+  text("Press 'i' for instructions.", width/2, 435);
   textSize(30);
-  text("Press 'a' to turn off animations at any time during the game.", width/2, 540);
+  text("Press 'a' to turn off animations at any time during the game.", width/2, 515);
 }
 
 void instructions() {
-  background(175,250,230);
+  background(175, 250, 230);
   textAlign(CENTER);
   textSize(30);
   text("The Four General Rules!", 640, 100);
@@ -167,13 +160,13 @@ void instructions() {
 }
 
 void game() {
-  // display floor, ceiling, currentScore, coins
+  // display FLOOR, CEILING, currentScore, coins
   strokeWeight(1);
   stroke(0);
   image(bg, 0, 0);
   fill(5, 84, 70);
-  rect(0, 0, width, ceiling); // ceiling
-  rect(0, floor, width, ceiling); // floor
+  rect(0, 0, width, CEILING); // CEILING
+  rect(0, FLOOR, width, CEILING); // FLOOR
   fill(0);
   textSize(15);
   textAlign(LEFT);
@@ -183,7 +176,7 @@ void game() {
 
 
   // === move all elements ===
-  moveElements();
+  controlElements();
 
   // === spawn elements ===
   // spawn Coins
@@ -196,7 +189,7 @@ void game() {
   if (Math.random() < 0.008) spawnObstacles();
   // spawn Spacemen
   if (Math.random() < 0.01) spawnSpacemen();
-  if (p.getGoingUp()) spawnBullets();
+  if (keyPressed && key == ' ') spawnBullets();
 
   // === increment score and speed ===
   currentScore++;
@@ -212,9 +205,9 @@ void end() {
 }
 
 void endPage() {  
-  background(5,84,70);
+  background(5, 84, 70);
   stroke(0);
-  fill(175,250,230);
+  fill(175, 250, 230);
   strokeWeight(20);
   rect(width/2-500, height/2-250, 1000, 500);
 
@@ -222,7 +215,7 @@ void endPage() {
   textAlign(CENTER);
   fill(0);
   textSize(50);
-  
+
   if (deathMethod.equals("Obstacle")) {
     text("You hit an " + deathMethod + "! Try again?", width/2, 230);
   } else if (deathMethod.equals("end key")) {
@@ -255,18 +248,6 @@ boolean calcHighScore(int calc) {
   }
 
   return false; // highScore unchanged
-}
-
-void addToCoin() {
-  currentCoins++;
-}
-
-void setMode(int modeNum) {
-  mode = modeNum;
-}
-
-void setScrollLeft(float val) {
-  scrollLeft = scrollLeft + val;
 }
 
 void initializeImages() {
@@ -327,8 +308,8 @@ void makeLists() {
   spacemenList = new ArrayList<Spacemen>();
 }
 
-// moves all Objects within the various ArrayLists
-void moveElements() {
+// control all Objects within the various ArrayLists
+void controlElements() {
   // Player
   p.move();
   p.display();
@@ -416,8 +397,8 @@ void moveElements() {
         spacemenList.remove(s);
       }
     }
-    // get rid of it if it's below the floor
-    if (b.getY() + b.getYSpeed() >= floor) bulletList.remove(b);
+    // get rid of it if it's below the FLOOR
+    if (b.getY() + b.getYSpeed() >= FLOOR) bulletList.remove(b);
   }
 }
 
@@ -435,13 +416,13 @@ void spawnBullets() {
 
 void spawnCoins() {
   int distance = 200;
-  
-  
+
+
   int coinDiameter = coinImage[0].height;
 
   int[][] layout = CoinLayouts.getArrangement();
   float firstX = width + coinDiameter/2; // spawns directly off-screen
-  float firstY = (float)(Math.random()*(floor-ceiling-(layout.length*coinDiameter)))+ceiling+coinDiameter/2;
+  float firstY = (float)(Math.random()*(FLOOR-CEILING-(layout.length*coinDiameter)))+CEILING+coinDiameter/2;
 
   // check for Coin or Obstacle overlaps within "distance" px
   for (int i = 0; i < layout.length; i++) { // determines y
@@ -478,24 +459,24 @@ void spawnLasers() {
   // 7 total Laser positionings in total, determine which show up
   for (int i = 0; i < 7; i++) {
     if (Math.random() < Math.pow(0.5, laserList.size()+1)) {
-      laserList.add(new Laser(50, ceiling + 25 + 85*i));
+      laserList.add(new Laser(50, CEILING + 25 + 85*i));
     }
   }
 }
 
 void spawnMissiles() {
-  float randY = (float)(Math.random()*(floor-ceiling-missileImage.height)) + ceiling;
+  float randY = (float)(Math.random()*(FLOOR-CEILING-missileImage.height)) + CEILING;
   Missile m = new Missile(1280, randY, missileImage.width, missileImage.height);
   missileList.add(m);
 }
 
 void spawnObstacles() {
   int distance = 400; // determines distance between Objects
-  
-  
+
+
   // set the two Obstacle orientations
-  float y1 = (float)(Math.random()*(floor-ceiling-obstacleImageHorizontal.height)) + ceiling; // horizontal
-  float y2 = (float)(Math.random()*(floor-ceiling-obstacleImageVertical.height)) + ceiling; // vertical
+  float y1 = (float)(Math.random()*(FLOOR-CEILING-obstacleImageHorizontal.height)) + CEILING; // horizontal
+  float y2 = (float)(Math.random()*(FLOOR-CEILING-obstacleImageVertical.height)) + CEILING; // vertical
   Obstacle o1 = new Obstacle(1280, y1, obstacleImageHorizontal.width, obstacleImageHorizontal.height); // horizontal
   Obstacle o2 = new Obstacle(1280, y2, obstacleImageVertical.width, obstacleImageVertical.height); // vertical
 

@@ -2,7 +2,6 @@ public class Player {
   private float x, y, dy;
   private int radius;
   private float ACCELERATION, GRAVITY;
-  private boolean goingUp;
 
   public Player(float x, float y, int radius) {
     this.radius = radius;
@@ -18,10 +17,10 @@ public class Player {
   }
 
   void move() {
-    boolean atCeiling = y + dy < ceiling + radius;
-    boolean atFloor = y + dy > floor - radius;
+    boolean atCeiling = y + dy < CEILING + radius;
+    boolean atFloor = y + dy > FLOOR - radius;
 
-    // set dy to 0 if it's at the ceiling or floor
+    // set dy to 0 if it's at the CEILING or FLOOR
     if (atCeiling || atFloor) {
       dy = 0;
     }
@@ -29,18 +28,16 @@ public class Player {
     // modify dy based on direction
     if (keyPressed && key == ' ') {
       dy += ACCELERATION;
-      goingUp = true;
     } else {
       dy += GRAVITY;
-      goingUp = false;
     }
 
     // change y
     if (atCeiling) {
-      y = ceiling + radius;
+      y = CEILING + radius;
     } else if (atFloor) {
-      y = floor - radius;
-    } else { // between ceiling and floor
+      y = FLOOR - radius;
+    } else { // between CEILING and FLOOR
       y += dy;
     }
   }
@@ -49,7 +46,6 @@ public class Player {
     return (dist(x, y, c.getX(), c.getY()) <= radius + c.getRadius());
   }
 
-  // may have to edit to accomodate for missile and laser
   boolean isTouchingObstacle(Obstacle o) {
     // check for Laser warning time
     String obstacleType = o.getClass().getSimpleName();
@@ -81,11 +77,7 @@ public class Player {
     return dy;
   }
 
-  float getRadius() {
+  int getRadius() {
     return radius;
-  }
-
-  boolean getGoingUp() {
-    return goingUp;
   }
 }
